@@ -5,7 +5,7 @@ export default function Footer () {
     <footer>
       <div className="inner">
         <div className="logo">
-          <img src="src/images/logo.png" alt="logo"/>
+          <img src="/images/logo.png" alt="logo"/>
         </div>
         <div className="contents">
           <div className="link">
