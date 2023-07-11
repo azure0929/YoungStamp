@@ -2,11 +2,12 @@ import { useState } from "react";
 import Modal from "./Components/Modal/Modal";
 
 import "./Common/Styles/global.scss";
+import Youtube from "@/Components/YouTube/Youtube.tsx";
 
 function App() {
   const [visibility, setVisibility] = useState(false);
   return (
-    <>
+    <div className={"container"}>
       {/* modal 예제 */}
       <h1>hello world</h1>
       <button
@@ -16,6 +17,8 @@ function App() {
       >
         modal
       </button>
+      <Youtube />
+
       <Modal visibility={visibility} toggle={setVisibility}>
         <div>hello 안녕</div>
         <form action="">
@@ -32,7 +35,7 @@ function App() {
           <li>5</li>
         </ul>
       </Modal>
-    </>
+    </div>
   );
 }
 
