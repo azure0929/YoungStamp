@@ -1,5 +1,3 @@
-
-
 .container {
   width: 1200px;
   display: block;
@@ -14,21 +12,26 @@
   display: grid;
 }
 
-.video-list{
+.video-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
 }
-.thumbnail{
+.video-items {
+  justify-self: center;
+  align-self: center;
+}
+
+.thumbnail {
   border-radius: 10px;
 }
 
-.thumbnail:hover{
+.thumbnail:hover {
   box-shadow: 0 0 10px #5cbb90;
   transform: scale(1.2);
 }
 
-.thumbnail img{
+.thumbnail img {
   width: 100%;
   height: 100%;
 }
@@ -43,17 +46,22 @@
   overflow: hidden;
   padding: 5px;
 }
-.channel-title{
+
+.channel-title {
   font-size: 14px;
   padding: 5px;
   opacity: 80%;
 }
+
 .content-box {
   display: flex;
   gap: 10px;
   align-items: center;
 }
+
 .make-date {
   font-size: 12px;
   opacity: 80%;
 }
+
+/*# sourceMappingURL=youtube.css.map */

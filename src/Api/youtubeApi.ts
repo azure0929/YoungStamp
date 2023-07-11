@@ -8,7 +8,7 @@ export async function getVideos() {
                     part: 'snippet',
                     type: 'video',
                     maxResults: 25,
-                    q: 'bts',
+                    q: '빅씨스',
                     key: import.meta.env.VITE_REACT_APP_YOUTUBE_API_KEY,
                 }
             })
@@ -20,7 +20,7 @@ export async function getVideos() {
 
 export async function fakeGetVideos() {
     try {
-        const res = await axios.get('/videos/ht.json')
+        const res = await axios.get('src/Api/videos/ht.json')
         return res.data.items.map((item:YoutubeType) => ({...item, id:item.id.videoId}))
     } catch(error) {
         console.error()

@@ -4,7 +4,7 @@ import Modal from "./Components/Modal/Modal";
 import "./Common/Styles/global.scss";
 import Youtube from "@/Components/YouTube/Youtube.tsx";
 
-function App() {
+export default function App() {
   const [visibility, setVisibility] = useState(false);
   return (
     <div className={"container"}>
@@ -39,4 +39,3 @@ function App() {
   );
 }
 
-export default App;
