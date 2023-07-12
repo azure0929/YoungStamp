@@ -3,7 +3,6 @@ import VideoCard from "./VideoCard.tsx";
 import "@/Components/YouTube/Youtube.scss";
 import { useEffect, useState } from "react";
 
-
 export default function Youtube() {
   const [videos, setVideos] = useState([]);
   useEffect(
