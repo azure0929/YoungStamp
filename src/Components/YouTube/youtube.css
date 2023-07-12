@@ -1,14 +1,12 @@
 .container {
   width: 1200px;
   display: block;
-  margin: 0 auto;
-  border: 1px solid #ff0000;
+  margin: auto;
   margin-top: 30px;
 }
 
 .youtube {
   margin-top: 20px;
-  border: 1px solid #ff0000;
   display: grid;
 }
 
@@ -16,10 +14,6 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
-}
-.video-items {
-  justify-self: center;
-  align-self: center;
 }
 
 .thumbnail {
