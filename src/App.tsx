@@ -5,7 +5,9 @@ import "@/Common/Styles/global.scss";
 function App() {
   return (
     <>
+
       <Main />
+
     </>
   );
 }
