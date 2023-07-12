@@ -78,40 +78,6 @@
     },
     {
       "kind": "youtube#searchResult",
-      "etag": "38qNzzx4umqVtZ5-tZHs2tL4Ois",
-      "id": {
-        "kind": "youtube#playlist",
-        "playlistId": "PLkVCuKZG0QB5RUvjcBY3lYnftB37Li3Y2"
-      },
-      "snippet": {
-        "publishedAt": "2021-12-27T08:55:00Z",
-        "channelId": "UCfDkQiPchwM0F2SkHWl5JYQ",
-        "title": "빅씨스 100일 프로그램 - 맨몸 운동 - 에센셜50",
-        "description": "무료 맨몸운동 홈트 프로그램 - 매일 영상이 올라옵니다 (주말 제외)",
-        "thumbnails": {
-          "default": {
-            "url": "https://i.ytimg.com/vi/w_tLTaY3lxc/default.jpg",
-            "width": 120,
-            "height": 90
-          },
-          "medium": {
-            "url": "https://i.ytimg.com/vi/w_tLTaY3lxc/mqdefault.jpg",
-            "width": 320,
-            "height": 180
-          },
-          "high": {
-            "url": "https://i.ytimg.com/vi/w_tLTaY3lxc/hqdefault.jpg",
-            "width": 480,
-            "height": 360
-          }
-        },
-        "channelTitle": "빅씨스 Bigsis",
-        "liveBroadcastContent": "none",
-        "publishTime": "2021-12-27T08:55:00Z"
-      }
-    },
-    {
-      "kind": "youtube#searchResult",
       "etag": "j7HyBHu3hmhe2x1t40qvqawfIjI",
       "id": {
         "kind": "youtube#video",
