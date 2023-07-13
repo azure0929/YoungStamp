@@ -1,0 +1,65 @@
+.daychart {
+  width: calc(100% - 720px);
+  height: 894px;
+  margin: 0 auto;
+  margin-top: 180px;
+  ul.tabs {
+    display: flex;
+    position: relative;
+    li.select {
+      position: absolute;
+      top: 0;
+      right: 0;
+      button {
+        color: var(--text);
+        background-color: #f3f3f3;
+        font-size: 16px;
+        height: 36px;
+        text-align: right;
+        border-radius: 6px;
+        &.is-active {
+          color: #fff;
+          background-color: var(--primary1);
+        }
+      }
+    }
+    button {
+      border-radius: 6px 6px 0 0;
+      height: 40px;
+      background-color: #f3f3f3;
+      color: var(--text);
+      font-family: "Noto Sans KR";
+      font-size: 18px;
+      letter-spacing: -.05em;
+      font-weight: 500;
+      &.is-active {
+        color: #fff;
+        background-color: var(--primary1);
+      }
+    }
+  }
+  div.contents {
+    margin: 0 auto;
+    padding: 18px;
+    background-color: #f3f3f3;
+    div {
+      height: 400px;
+      margin-bottom: 30px;
+      border-radius: 6px;
+      background-color: #fff;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// 임시 스타일
+.youtube {
+  background-color: #f3f3f3;
+  border-radius: 6px;
+  width: calc(100% - 720px);
+  margin: 0 auto;
+  margin-top: 70px;
+  height: 600px;
+}
