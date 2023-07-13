@@ -3,7 +3,7 @@ import { useState } from "react";
 import YouTube, { YouTubeProps } from "react-youtube";
 import "@/Components/YouTube/Youtube.scss";
 import "@/Components/Modal/Modal.scss";
-export default function( {video}:YoutubeType ) {
+export default function( {video}:{video:YoutubeType} ) {
   const { title, thumbnails, channelTitle, publishedAt } = video.snippet;
   const { isVisible, show, hide } = useModal();
 
@@ -60,31 +60,7 @@ function viewYoutube( video:YoutubeType ) {
     }
   };
   return (
-        <YouTube videoId={video.id} opts={opts}  />
+        <YouTube videoId={video.videoId} opts={opts}  />
   );
 }
 
-interface YoutubeType {
-  kind: string;
-  etag: string;
-  id: {
-    kind: string;
-    videoId: string;
-    channelId: string;
-    playlistId?: string;
-  };
-  snippet: {
-    publishedAt: Date;
-    channelId: string;
-    title: string;
-    description: string;
-    thumbnails: {
-      [key: string]: {
-        url: string;
-        width: number;
-        height: number;
-      };
-    };
-    channelTitle: string;
-  };
-}

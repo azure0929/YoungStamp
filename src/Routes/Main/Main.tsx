@@ -2,6 +2,7 @@ import Header from "@/Components/Header/Header";
 import Footer from "@/Components/Footer/Footer";
 import { useState } from "react";
 import "@/Routes/Main/Main.scss";
+import Youtube from "@/Components/YouTube/Youtube.tsx";
 
 export default function Main () {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -66,8 +67,7 @@ export default function Main () {
         </div>
       </div>
       <div className="youtube">
-        {/* 임시 내용 */}
-        youtube
+        <Youtube />
       </div>
       <Footer />
     </div>

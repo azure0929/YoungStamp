@@ -12,7 +12,7 @@ export async function getVideos() {
                     key: import.meta.env.VITE_REACT_APP_YOUTUBE_API_KEY,
                 }
             })
-        return res.data.items.map((item:YoutubeType) => ({...item, id:item.id.videoId}))
+        return res.data.items.map((item:YoutubeType) => ({...item, videoId:item.id.videoId}))
     } catch (error) {
         console.error()
     }
@@ -21,7 +21,7 @@ export async function getVideos() {
 export async function fakeGetVideos() {
     try {
         const res = await axios.get('src/Api/videos/ht.json')
-        return res.data.items.map((item:YoutubeType) => ({...item, id:item.id.videoId}))
+        return res.data.items.map((item:YoutubeType) => ({...item, videoId:item.id.videoId}))
     } catch(error) {
         console.error()
     }
