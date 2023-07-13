@@ -52,6 +52,8 @@ export default function Main () {
     }
   ]
 
+
+
   return (
     <div>
       <Header />
@@ -67,7 +69,6 @@ export default function Main () {
       </div>
       <div className="youtube">
         {/* 임시 내용 */}
-        youtube
       </div>
       <Footer />
     </div>
