@@ -82,7 +82,8 @@ declare interface SearchParamsType {
 
 declare interface SummaryType {
   period: string,
-  userId: string
+  userId: string,
+  category?: string
 }
 
 declare interface CalendarDataType {
