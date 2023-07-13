@@ -21,7 +21,7 @@ export default function Modal(props: PropsWithChildren<ModalProps>) {
             props.toggle(false);
           }}
         >
-          x
+          close
         </button>
       </div>
     </div>
