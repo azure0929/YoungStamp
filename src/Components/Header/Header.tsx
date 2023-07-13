@@ -2,8 +2,6 @@ import { useState } from "react";
 import Modal from "../Modal/Modal";
 import "@/Components/Header/Header.scss"
 import "@/Common/Styles/global.scss";
-import PretendBuyView from "@/Components/PretendBuy/PretendBuy_view.tsx";
-import PretendBuyList from "@/Components/PretendBuy/PretendBuy-list.tsx";
 import PretendBuyPost from "@/Components/PretendBuy/PretendBuy-post.tsx";
 import PretendBuyTitle from "@/Components/PretendBuy/PretendBuy-title.tsx";
 
@@ -40,7 +38,6 @@ export default function Header () {
       <Modal visibility={buy} toggle={setBuy}>
         <PretendBuyTitle />
         <PretendBuyPost />
-        <PretendBuyList />
       </Modal>
 
       {/* 나의 권장 칼로리 모달 */}

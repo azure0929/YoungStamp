@@ -23,3 +23,12 @@ declare interface CalendarDataType {
   month: string,
   userId: string
 }
+
+declare interface searchParamsTypeOutput {
+  id:string,
+  amount:number,
+  userId:string,
+  category:string,
+  date:string,
+  description?:string,
+}
