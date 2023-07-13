@@ -18,7 +18,7 @@ export default function Youtube() {
       {videos && (
         <ul className={"video-list"}>
           {videos.map((video: YoutubeType) => (
-            <VideoCard key={video.id} video={video} />
+            <VideoCard key={video.videoId} video={video} />
           ))}
         </ul>
       )}
@@ -26,28 +26,3 @@ export default function Youtube() {
   );
 }
 
-interface YoutubeType {
-  kind: string;
-  etag: string;
-  id: {
-    kind: string;
-    videoId: string;
-    channelId: string;
-    playlistId?: string;
-    videoid?: string;
-  };
-  snippet: {
-    publishedAt: Date;
-    channelId: string;
-    title: string;
-    description: string;
-    thumbnails: {
-      [key: string]: {
-        url: string;
-        width: number;
-        height: number;
-      };
-    };
-    channelTitle: string;
-  };
-}

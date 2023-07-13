@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { postExpense } from "@/Api/api.ts";
 import dayjs from "dayjs";
 import PretendBuyList from "@/Components/PretendBuy/PretendBuy-list.tsx";
@@ -19,11 +19,12 @@ export default function PretendBuyPost() {
     e.preventDefault();
     const postData:ExpendType =
       {amount:money, userId:'team6',category:'삿다치고',description:text,date:today}
-    postExpense(postData).then((data) => console.log(data));
+    useEffect(() => {
+      postExpense(postData).then((data) => console.log(data));
+    }, []);
     setText("");
     setMoney(0);
   };
-
   return (
     <div>
       <form
@@ -51,7 +52,8 @@ export default function PretendBuyPost() {
         </div>
         <div className={'buttons'}>
           <button>달 력</button>
-          <button type="submit">추가하기</button>
+          <button
+            type="submit">추가하기</button>
         </div>
       </form>
       <PretendBuyList  date={today}/>
