@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
 import { postExpense } from "@/Api/api.ts";
 import dayjs from "dayjs";
 import PretendBuyList from "@/Components/PretendBuy/PretendBuy-list.tsx";
+import { useState } from "react";
 
 export default function PretendBuyPost() {
   const [text, setText] = useState("");
@@ -10,27 +10,25 @@ export default function PretendBuyPost() {
   const today = currentDate.format("YYYY-MM-DD");
 
 
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.target.id ==='money'? setMoney(Number(e.target.value)) : setText(e.target.value)
+    e.target.id === "money" ? setMoney(Number(e.target.value)) : setText(e.target.value);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const postData:ExpendType =
-      {amount:money, userId:'team6',category:'삿다치고',description:text,date:today}
-    useEffect(() => {
-      postExpense(postData).then((data) => console.log(data));
-    }, []);
+    const postData: ExpendType =
+      { amount: money, userId: "team6", category: "삿다치고", description: text, date: today };
+    postExpense(postData).then((data) => console.log(data));
     setText("");
     setMoney(0);
   };
+  console.log(money,text);
   return (
     <div>
       <form
-        className={'post-form'}
+        className={"post-form"}
         onSubmit={handleSubmit}>
-        <div className={'content-box'}>
+        <div className={"content-box"}>
           <label htmlFor="action">내가 찾은 물품</label>
           <input
             id="product"
@@ -40,7 +38,7 @@ export default function PretendBuyPost() {
             name="action"
           />
         </div>
-        <div className={'money-box'}>
+        <div className={"money-box"}>
           <label htmlFor="money">금 액</label>
           <input
             id="money"
@@ -50,13 +48,11 @@ export default function PretendBuyPost() {
             name="money"
           />
         </div>
-        <div className={'buttons'}>
-          <button>달 력</button>
-          <button
-            type="submit">추가하기</button>
+        <div className={"buttons"}>
+          <button type={'submit'}>추가하기</button>
         </div>
       </form>
-      <PretendBuyList  date={today}/>
+      <PretendBuyList date={today} />
     </div>
   );
 }
