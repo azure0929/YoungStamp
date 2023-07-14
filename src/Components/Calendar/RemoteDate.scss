@@ -1,0 +1,45 @@
+.controll-wrap {
+  //background-color: var(--primary2);
+  width: 100%;
+
+  button {
+    background-color: transparent;
+    width: 12px;
+  }
+  .controll {
+    display: flex;
+    justify-content: center;
+    width: 420px;
+    margin: auto;
+    position: relative;
+  }
+  .month {
+    display: flex;
+    width: 64px;
+    justify-content: space-between;
+  }
+  .year {
+    position: absolute;
+    width: 82px;
+    right: 0;
+    justify-content: space-between;
+    display: flex;
+  }
+}
+#prev {
+  background-image: url(/icons/prev.png);
+}
+#next {
+  background-image: url(/icons/next.png);
+}
+#down {
+  background-image: url(/icons/down.png);
+}
+#up {
+  background-image: url(/icons/up.png);
+}
+.img {
+  //background-image: url(/icons/Vector.svg);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}

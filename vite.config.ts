@@ -10,5 +10,15 @@ export default defineConfig({
   resolve: {
     alias: [{ find: "@", replacement: `${__dirname}/src` }],
   },
-
+  server: {
+    host: "localhost",
+    proxy: {
+      "/kdt5": {
+        target: "http://52.78.195.183:3003/api",
+        changeOrigin: true,
+        secure: true,
+        rewrite: (path) => path.replace(/^\/kdt5/, ""),
+      },
+    },
+  },
 });
