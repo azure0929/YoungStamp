@@ -5,12 +5,23 @@ import "./Calendar.scss";
 import axios from "axios";
 
 type Props = CalendarProps & {
+  today: number;
+  setToday: (param: number) => void;
   category: string;
   backgroundColor: string;
 };
 
 export default function Calendar(props: Props) {
-  const { month, year, setMonth, setYear, category, backgroundColor } = props;
+  const {
+    month,
+    year,
+    setMonth,
+    setYear,
+    today,
+    setToday,
+    category,
+    backgroundColor,
+  } = props;
   const [totalDates, setTotalDates] = useState<number[]>([]);
   const makeCalendar = useCallback(
     (year: number, month: number) => {
@@ -34,7 +45,7 @@ export default function Calendar(props: Props) {
   }, [month, year]);
 
   const dayList = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  const today = new Date().getDate();
+  //const today = new Date().getDate();
   const sth = useRef<Map<string, number>>();
 
   async function tempApi() {
@@ -77,6 +88,9 @@ export default function Calendar(props: Props) {
                 } ${date === today ? "today" : ""}`}
                 style={{
                   backgroundColor: date === today ? backgroundColor : "",
+                }}
+                onClick={() => {
+                  setToday(date);
                 }}
                 key={i}
               >

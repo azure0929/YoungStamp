@@ -4,8 +4,10 @@ import RemoteDate from "@/Components/Calendar/RemoteDate";
 
 export default function Calories() {
   const [tab, setDealTab] = useState("curr");
+  const [today, setToday] = useState(new Date().getDate());
   const [whatYear, setWhatYear] = useState(new Date().getFullYear());
   const [whatMonth, setWhatMonth] = useState(new Date().getMonth() + 1);
+  console.log(whatYear, whatMonth, today);
   return (
     <>
       <div className="gender">
@@ -40,9 +42,11 @@ export default function Calories() {
       <Calendar
         month={whatMonth}
         year={whatYear}
+        today={today}
+        setToday={setToday}
         setMonth={setWhatMonth}
         setYear={setWhatYear}
-        category={"food"}
+        category={"칼로리"}
         backgroundColor={"var(--primary1)"}
       />
     </>

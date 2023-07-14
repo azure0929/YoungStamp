@@ -4,25 +4,8 @@
   //height: 362px;
   margin: 0 90px;
   flex-wrap: wrap;
-
-  // & > div {
-  //   //width: calc(100% / 7);
-  //   width: calc(100% / 7);
-  //   height: 48px;
-  //   text-align: center;
-  //   font-size: 14px;
-  //   margin-bottom: 10px;
-  // }
 }
 
-.gray {
-  color: gray;
-}
-.today {
-  //background-color: var(--primary2);
-  border-radius: 4px;
-  color: #fff;
-}
 .days {
   display: flex;
   .day {
@@ -43,4 +26,12 @@
   display: flex;
   margin-bottom: 10px;
   flex-direction: column;
+  &.today {
+    border-radius: 4px;
+    color: #fff;
+  }
+  &.gray {
+    color: gray;
+    background-color: #fff !important;
+  }
 }
