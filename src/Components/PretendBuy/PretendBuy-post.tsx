@@ -2,27 +2,33 @@ import { postExpense } from "@/Api/api.ts";
 import dayjs from "dayjs";
 import PretendBuyList from "@/Components/PretendBuy/PretendBuy-list.tsx";
 import { useState } from "react";
+import { useQueryClient } from "@tanstack/react-query";
 
 export default function PretendBuyPost() {
   const [text, setText] = useState("");
   const [money, setMoney] = useState(0);
   const currentDate = dayjs();
   const today = currentDate.format("YYYY-MM-DD");
+  const queryClient =  useQueryClient();
 
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const postData: ExpendType =
+      { amount: money, userId: "team6", category: "삿다치고", description: text, date: today };
+    postExpense(postData).then(() => {queryClient.invalidateQueries(["searchData"])})
+
+
+    setText("");
+    setMoney(0);
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.target.id === "money" ? setMoney(Number(e.target.value)) : setText(e.target.value);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const postData: ExpendType =
-      { amount: money, userId: "team6", category: "삿다치고", description: text, date: today };
-    postExpense(postData).then((data) => console.log(data));
-    setText("");
-    setMoney(0);
-  };
-  console.log(money,text);
+
   return (
     <div>
       <form

@@ -3,7 +3,6 @@ import Modal from "../Modal/Modal";
 import "@/Components/Header/Header.scss"
 import "@/Common/Styles/global.scss";
 import PretendBuyPost from "@/Components/PretendBuy/PretendBuy-post.tsx";
-import PretendBuyTitle from "@/Components/PretendBuy/PretendBuy-title.tsx";
 
 export default function Header () {
   const [buy, setBuy] = useState(false);
@@ -36,11 +35,10 @@ export default function Header () {
 
       {/* 샀다치고 모달 */}
       <Modal visibility={buy} toggle={setBuy}>
-        <PretendBuyTitle />
         <PretendBuyPost />
       </Modal>
 
-      {/* 나의 권장 칼로리 모달 */}
+       나의 권장 칼로리 모달
       <Modal visibility={scale} toggle={setScale}>
         <div className="gender">
           <button type="button" className={`btn ${tab === 'curr' ? 'active' : ''}`} onClick={() => setDealTab('curr')}>남자 권장 칼로리</button>

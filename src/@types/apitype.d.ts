@@ -25,7 +25,7 @@ declare interface CalendarDataType {
 }
 
 declare interface searchParamsTypeOutput {
-  id:string,
+  _id:string,
   amount:number,
   userId:string,
   category:string,
