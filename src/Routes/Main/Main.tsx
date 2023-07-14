@@ -1,5 +1,3 @@
-import Header from "@/Components/Header/Header";
-import Footer from "@/Components/Footer/Footer";
 import { useState } from "react";
 import "@/Routes/Main/Main.scss";
 import Youtube from "@/Components/YouTube/Youtube.tsx";
@@ -55,7 +53,6 @@ export default function Main () {
 
   return (
     <div>
-      <Header />
       <div className="daychart">
         <ul className="tabs is-boxed">
           {tabContArr.map((section) => {
@@ -69,7 +66,6 @@ export default function Main () {
       <div className="youtube">
         <Youtube />
       </div>
-      <Footer />
     </div>
   );
 }
