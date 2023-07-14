@@ -53,8 +53,8 @@ function useModal() {
 
 function viewYoutube( video:YoutubeType ) {
   const opts: YouTubeProps["opts"] = {
-    height: '440px',
-    width: '800px',
+    height: "540",
+    width: "600",
     playerVars: {
       autoplay: 1
     }

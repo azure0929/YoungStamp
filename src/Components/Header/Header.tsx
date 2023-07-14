@@ -3,6 +3,7 @@ import Modal from "../Modal/Modal";
 import "@/Components/Header/Header.scss";
 import "@/Common/Styles/global.scss";
 import Calories from "@/Routes/Calories/Calories";
+import PretendBuyPost from "@/Components/PretendBuy/PretendBuy-post.tsx";
 
 export default function Header() {
   const [buy, setBuy] = useState(false);
@@ -47,23 +48,13 @@ export default function Header() {
 
       {/* 샀다치고 모달 */}
       <Modal visibility={buy} toggle={setBuy}>
-        <div>hello</div>
-        <form action="">
-          <input type="text" />
-          <input type="text" />
-        </form>
-        <button>달력보기</button>
-        <button>추가하기</button>
-        <ul>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-        </ul>
+        <PretendBuyPost />
       </Modal>
 
       {/* 나의 권장 칼로리 모달 */}
       <Modal visibility={scale} toggle={setScale}>
         <Calories />
+        <PretendBuyPost />
       </Modal>
     </header>
   );
