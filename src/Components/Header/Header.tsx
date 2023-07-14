@@ -4,7 +4,6 @@ import "@/Components/Header/Header.scss";
 import "@/Common/Styles/global.scss";
 import Calories from "@/Routes/Calories/Calories";
 import PretendBuyPost from "@/Components/PretendBuy/PretendBuy-post.tsx";
-import PretendBuyList from "@/Components/PretendBuy/PretendBuy-list.tsx";
 
 export default function Header() {
   const [buy, setBuy] = useState(false);
