@@ -55,12 +55,11 @@
 }
 
 .youtube {
-  background-color: #f3f3f3;
   border-radius: 6px;
   width: calc(100% - 720px);
   margin: 0 auto;
   margin-top: 70px;
-  height: 600px;
+  height: auto;
 }
 
 /*# sourceMappingURL=Main.css.map */

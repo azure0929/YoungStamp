@@ -1,8 +1,13 @@
 .container {
   max-width: 1200px;
   width: 100%;
+<<<<<<< HEAD
   display: block;
   margin: auto;
+=======
+  display: flex;
+  justify-content: center;
+>>>>>>> 73a8c3b04dfa60240523859f0caa1ec0a2db5b5b
   margin-top: 30px;
 }
 
@@ -12,9 +17,14 @@
 }
 
 .video-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  grid-gap: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  grid-gap: 40px;
 }
 
 .thumbnail {

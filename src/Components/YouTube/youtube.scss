@@ -14,9 +14,12 @@
 }
 
 .video-list{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
+  //display: grid;
+  //grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  grid-gap: 40px;
 }
 .thumbnail{
   border-radius: 10px;
