@@ -54,7 +54,6 @@ export default function Header() {
       {/* 나의 권장 칼로리 모달 */}
       <Modal visibility={scale} toggle={setScale}>
         <Calories />
-        <PretendBuyPost />
         <SearchCartList />
       </Modal>
     </header>

@@ -11,8 +11,8 @@ export default function PretendBuyList(date: { date: string }) {
     userId: "team6"
   };
 
-  const changeDate:string = dayjs(date.date).format("YYYY-MM-DD");
-  console.log(changeDate);
+  // const changeDate:string = dayjs(date.date).format("YYYY-MM-DD");
+  // console.log(changeDate);
 
   const { isLoading, error, data: searchData }
     = useQuery(["searchData", params], () => {
@@ -44,7 +44,7 @@ export default function PretendBuyList(date: { date: string }) {
     <>
       <ul>
         {searchData.map((item: searchParamsTypeOutput) => {
-          if (item.date === changeDate) {
+          if (item.date === date.date) {
             return (
               <li key={item._id}>
                 <input
