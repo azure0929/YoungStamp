@@ -1,4 +1,4 @@
-const YMD = new Date();
+// const YMD = new Date();
 //const year = YMD.getFullYear();
 
 export default function generateCalendar(year: number, month: number) {
