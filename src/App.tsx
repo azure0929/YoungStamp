@@ -1,11 +1,10 @@
-import Main from "@/Routes/Main/Main";
-
 import "@/Common/Styles/global.scss";
+import RoutersPage from "./Routes/Routes";
 
 function App() {
   return (
     <>
-      <Main />
+      <RoutersPage />
     </>
   );
 }

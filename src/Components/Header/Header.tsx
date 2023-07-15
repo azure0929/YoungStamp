@@ -4,6 +4,8 @@ import "@/Components/Header/Header.scss";
 import "@/Common/Styles/global.scss";
 import Calories from "@/Routes/Calories/Calories";
 import PretendBuyPost from "@/Components/PretendBuy/PretendBuy-post.tsx";
+import SearchIput from "../Search/Component/SearchIput";
+import SearchCartList from "../Search/Component/SearchCartList";
 
 export default function Header() {
   const [buy, setBuy] = useState(false);
@@ -28,10 +30,8 @@ export default function Header() {
               샀다치고
             </button>
           </div>
-          <div className="search">
-            <input type="text" placeholder="칼로리를 입력해주세요." />
-            <img src="/images/search.png" alt="검색 아이콘" />
-          </div>
+          {/* 음식 검색 기능 컴포넌트 */}
+          <SearchIput />
           <div className="myinfo">
             <p>나의 칼로리 정보</p>
             <div className="scalebtn">
@@ -55,6 +55,7 @@ export default function Header() {
       <Modal visibility={scale} toggle={setScale}>
         <Calories />
         <PretendBuyPost />
+        <SearchCartList />
       </Modal>
     </header>
   );
