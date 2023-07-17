@@ -24,6 +24,9 @@ declare interface CalendarDataType {
   month: string,
   userId: string
 }
+declare interface PretendBuyProps {
+  getToday: (todayDate: string) => void;
+}
 
 declare interface searchParamsTypeOutput {
   _id:string,

@@ -6,17 +6,23 @@ import "@/Common/Styles/global.scss";
 import SearchIput from "../Search/Component/SearchIput";
 import SearchCartList from "../Search/Component/SearchCartList";
 import ContentPost from "@/Components/Common/Content-post.tsx";
-import RemoteDate from "@/Components/Calendar/RemoteDate.tsx";
-import Calendar from "@/Components/Calendar/Calendar.tsx";
+import Calories from "@/Routes/Calories/Calories.tsx";
+import PretendBuy from "@/Routes/PretendBuy/Pretend-Buy.tsx";
 
 export default function Header() {
   const [buy, setBuy] = useState(false);
   const [scale, setScale] = useState(false);
   const [isActive] = useState(false);
-  const [whatYear, setWhatYear] = useState(new Date().getFullYear());
-  const [whatMonth, setWhatMonth] = useState(new Date().getMonth() + 1);
-  const [today, setToday] = useState(new Date().getDate());
-  let todayDate: string = `${whatYear}-${String(whatMonth).padStart(2, "0")}-${String(today).padStart(2, "0")}`;
+  const [getDate, setDate] = useState("");
+  const [dietToday, setCaloryToday] = useState("");
+  const getToday = (todayDate:string) => {
+    setDate(todayDate);
+  }
+  const getCaloryToday = (caloryToday:string) => {
+    setCaloryToday(caloryToday);
+  }
+
+
   return (
     <header>
       <div className="inner">
@@ -53,46 +59,14 @@ export default function Header() {
 
       {/* 샀다치고 모달 */}
       <Modal visibility={buy} toggle={setBuy}>
-        <RemoteDate
-          month={whatMonth}
-          year={whatYear}
-          setMonth={setWhatMonth}
-          setYear={setWhatYear}
-          backgroundColor={"var(--primary2)"}
-        />
-        <Calendar
-          month={whatMonth}
-          year={whatYear}
-          today={today}
-          setToday={setToday}
-          setMonth={setWhatMonth}
-          setYear={setWhatYear}
-          category={'삿다치고'}
-          backgroundColor={"var(--primary1)"}
-        />
-        <ContentPost todayDate={todayDate} categoryName={"삿다치고"}/>
+        <PretendBuy getToday={getToday} />
+        <ContentPost todayDate={getDate} categoryName={"삿다치고"}/>
       </Modal>
 
       {/* 나의 권장 칼로리 모달 */}
       <Modal visibility={scale} toggle={setScale}>
-        <RemoteDate
-          month={whatMonth}
-          year={whatYear}
-          setMonth={setWhatMonth}
-          setYear={setWhatYear}
-          backgroundColor={"var(--primary2)"}
-        />
-        <Calendar
-          month={whatMonth}
-          year={whatYear}
-          today={today}
-          setToday={setToday}
-          setMonth={setWhatMonth}
-          setYear={setWhatYear}
-          category={'삿다치고'}
-          backgroundColor={"var(--primary1)"}
-        />
-        <ContentPost todayDate={todayDate} categoryName={"다이어트"} />
+        <Calories getToday={getCaloryToday} />
+        <ContentPost todayDate={dietToday} categoryName={"다이어트"} />
         <SearchCartList />
       </Modal>
     </header>
