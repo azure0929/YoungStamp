@@ -8,7 +8,7 @@ import { useState } from "react";
 export default function ContentList(props: { date: string, category: string }) {
   const [success, setSuccess] = useState(false);
   const [description, setDescription] = useState("");
-  const [amount, setamount] = useState("");
+  const [amount, setAmount] = useState(0);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   // const [amount, setAmount] = useState();
   /** use Query fetch 부분 */
@@ -37,13 +37,34 @@ export default function ContentList(props: { date: string, category: string }) {
     })
   /** use Query 부분 끝  (staleTime 1분 설정) */
 
-  const handleChange =  (id: string, e: React.ChangeEvent<HTMLInputElement>) => {
+  // const handleChange =  (id: string, e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setSelectedId(id);
+  //   const target = e.target as HTMLInputElement;
+  //   target.id === 'description'? setDescription(target.value) : setamount(String(target.value))
+  //   const item = searchData.find((item:ExpendType) => item._id === id);
+  //   const data = item ? { ...item, description: target.value } : null;
+  //   changeExpend.mutate({id, data})
+  // };
+
+  const handleChange = (id: string, e: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedId(id);
     const target = e.target as HTMLInputElement;
-    target.id === 'description'? setDescription(target.value) : setamount(String(target.value))
-    const item = searchData.find((item:ExpendType) => item._id === id);
-    const data = item ? { ...item, description: target.value } : null;
-    changeExpend.mutate({id, data})
+
+    if (target.id === 'description') {
+      setDescription(target.value);
+      const item = searchData.find((item:ExpendType) => item._id === id);
+      const data = item ? { ...item, description: target.value } : null;
+      if(data) {
+        changeExpend.mutate({id, data});
+      }
+    } else {
+      setAmount(Number(target.value));
+      const item = searchData.find((item:ExpendType) => item._id === id);
+      const data = item ? { ...item, amount: Number(target.value) } : null;
+      if(data) {
+        changeExpend.mutate({id, data});
+      }
+    }
   };
 
   const handleDelete = (id: string) => {
