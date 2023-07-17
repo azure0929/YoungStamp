@@ -1,5 +1,4 @@
 import { postExpense } from "@/Api/api.ts";
-// import PretendBuyList from "@/Components/PretendBuy/PretendBuy-list.tsx";
 import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import RemoteDate from "@/Components/Calendar/RemoteDate.tsx";
@@ -49,7 +48,6 @@ export default function ContentPost({ categoryName }: CategoryProp) {
       : setText(e.target.value);
   };
 
-  // @ts-ignore
   return (
     <div>
       <div>

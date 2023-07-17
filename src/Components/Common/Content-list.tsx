@@ -37,8 +37,6 @@ export default function ContentList(props: { date: string, category: string }) {
     })
   /** use Query 부분 끝  (staleTime 1분 설정) */
 
-
-
   const handleChange = (id: string, e: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedId(id);
     const target = e.target as HTMLInputElement;
