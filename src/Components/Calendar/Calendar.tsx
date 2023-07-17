@@ -1,15 +1,7 @@
 import { useEffect, useState, useCallback, useRef } from "react";
 import generateCalendar from "@/Common/calendar";
-
 import "./Calendar.scss";
 import axios from "axios";
-
-declare type Props = CalendarProps & {
-  today: number;
-  setToday: (param: number) => void;
-  category: string;
-  backgroundColor: string;
-};
 
 export default function Calendar(props: Props) {
   const {

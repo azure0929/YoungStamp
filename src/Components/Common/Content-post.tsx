@@ -1,41 +1,57 @@
 import { postExpense } from "@/Api/api.ts";
 // import PretendBuyList from "@/Components/PretendBuy/PretendBuy-list.tsx";
 import { useState } from "react";
-import { useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import RemoteDate from "@/Components/Calendar/RemoteDate.tsx";
 import Calendar from "@/Components/Calendar/Calendar.tsx";
-import PretendBuyList from "@/Components/PretendBuy/PretendBuy-list.tsx";
+import ContentList from "@/Components/Common/Content-list.tsx";
+import "@/Components/Common/Content_modal.scss";
 
-export default function PretendBuyPost() {
+
+export default function ContentPost({ categoryName }: CategoryProp) {
   const [text, setText] = useState("");
   const [money, setMoney] = useState(0);
   const [whatYear, setWhatYear] = useState(new Date().getFullYear());
   const [whatMonth, setWhatMonth] = useState(new Date().getMonth() + 1);
   const [today, setToday] = useState(new Date().getDate());
+  const [success, setSuccess] = useState(false);
 
-  let todayDate:string = `${whatYear}-${String(whatMonth).padStart(2, '0')}-${String(today).padStart(2, '0')}`;
+  /** 날짜 형태 맞추기 */
+  let todayDate: string = `${whatYear}-${String(whatMonth).padStart(2, "0")}-${String(today).padStart(2, "0")}`;
 
-
+  /** use Query 부분 */
   const queryClient = useQueryClient();
+  const addExpend =
+    useMutation((postData: ExpendType) => postExpense(postData), {
+      onSuccess: () => queryClient.invalidateQueries(["searchData"])
+    });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const postData: ExpendType =
-      { amount: money, userId: "team6", category:"삿다치고", description: text, date: String(todayDate) };
-    postExpense(postData).then(() => {
-      queryClient.invalidateQueries(["searchData"]);
-    });
 
+    const postData: ExpendType =
+      { amount: money, userId: "team6", category: categoryName, description: text, date: String(todayDate) };
+    addExpend.mutate(postData, {
+      onSuccess: () => {
+        setSuccess(true);
+        setTimeout(()=>{
+          setSuccess(false)
+        },3000)
+      }
+    });
     setText("");
     setMoney(0);
   };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.target.id === "money" ? setMoney(Number(e.target.value)) : setText(e.target.value);
+    const re = /^[0-9\b]+$/;
+    e.target.id === "money"
+      ? (e.target.value === '' || re.test(e.target.value)) && setMoney(Number(e.target.value))
+      : setText(e.target.value);
   };
 
   // @ts-ignore
   return (
-    <div className={'content-container'}>
+    <div>
       <div>
         <RemoteDate
           month={whatMonth}
@@ -51,7 +67,7 @@ export default function PretendBuyPost() {
           setToday={setToday}
           setMonth={setWhatMonth}
           setYear={setWhatYear}
-          category={"칼로리"}
+          category={categoryName}
           backgroundColor={"var(--primary1)"}
         />
 
@@ -83,7 +99,8 @@ export default function PretendBuyPost() {
           <button type={"submit"}>추가하기</button>
         </div>
       </form>
-      <PretendBuyList date={todayDate} />
+      {success && <div className={"성공적으로 입력되었습니다."}>추가되었습니다.</div>}
+      <ContentList date={todayDate} category={categoryName} />
     </div>
   );
 }

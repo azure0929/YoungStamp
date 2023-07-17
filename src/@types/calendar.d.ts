@@ -13,3 +13,10 @@ declare interface ResponseCalendar {
 }
 
 declare type CalendarMap = [string, number];
+
+declare type Props = CalendarProps & {
+  today: number;
+  setToday: (param: number) => void;
+  category: string;
+  backgroundColor: string;
+};

@@ -38,4 +38,10 @@
   justify-content: center;
 }
 
+.content-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /*# sourceMappingURL=pretendBuy_modal.css.map */
