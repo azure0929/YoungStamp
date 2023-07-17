@@ -1,22 +1,22 @@
 import { postExpense } from "@/Api/api.ts";
 import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import RemoteDate from "@/Components/Calendar/RemoteDate.tsx";
-import Calendar from "@/Components/Calendar/Calendar.tsx";
+// import RemoteDate from "@/Components/Calendar/RemoteDate.tsx";
+// import Calendar from "@/Components/Calendar/Calendar.tsx";
 import ContentList from "@/Components/Common/Content-list.tsx";
 import "@/Components/Common/Content_modal.scss";
 
 
-export default function ContentPost({ categoryName }: CategoryProp) {
+export default function ContentPost({todayDate, categoryName} :{todayDate :string, categoryName :string}) {
   const [text, setText] = useState("");
   const [money, setMoney] = useState(0);
-  const [whatYear, setWhatYear] = useState(new Date().getFullYear());
-  const [whatMonth, setWhatMonth] = useState(new Date().getMonth() + 1);
-  const [today, setToday] = useState(new Date().getDate());
+  // const [whatYear, setWhatYear] = useState(new Date().getFullYear());
+  // const [whatMonth, setWhatMonth] = useState(new Date().getMonth() + 1);
+  // const [today, setToday] = useState(new Date().getDate());
   const [success, setSuccess] = useState(false);
 
   /** 날짜 형태 맞추기 */
-  let todayDate: string = `${whatYear}-${String(whatMonth).padStart(2, "0")}-${String(today).padStart(2, "0")}`;
+  // let todayDate: string = `${whatYear}-${String(whatMonth).padStart(2, "0")}-${String(today).padStart(2, "0")}`;
 
   /** use Query 부분 */
   const queryClient = useQueryClient();
@@ -50,26 +50,6 @@ export default function ContentPost({ categoryName }: CategoryProp) {
 
   return (
     <div>
-      <div>
-        <RemoteDate
-          month={whatMonth}
-          year={whatYear}
-          setMonth={setWhatMonth}
-          setYear={setWhatYear}
-          backgroundColor={"var(--primary2)"}
-        />
-        <Calendar
-          month={whatMonth}
-          year={whatYear}
-          today={today}
-          setToday={setToday}
-          setMonth={setWhatMonth}
-          setYear={setWhatYear}
-          category={categoryName}
-          backgroundColor={"var(--primary1)"}
-        />
-
-      </div>
       <form
         className={"post-form"}
         onSubmit={handleSubmit}>
@@ -85,7 +65,7 @@ export default function ContentPost({ categoryName }: CategoryProp) {
         </div>
         <div className={"money-box"}>
           <input
-            placeholder="절약하게 된 금액을 입력해 주세요"
+            placeholder="절약하게 된 금액이나 칼로리를 입력해 주세요"
             id="money"
             onChange={handleChange}
             value={money}
