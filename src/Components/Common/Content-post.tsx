@@ -1,8 +1,6 @@
 import { postExpense } from "@/Api/api.ts";
 import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-// import RemoteDate from "@/Components/Calendar/RemoteDate.tsx";
-// import Calendar from "@/Components/Calendar/Calendar.tsx";
 import ContentList from "@/Components/Common/Content-list.tsx";
 import "@/Components/Common/Content_modal.scss";
 
@@ -10,9 +8,6 @@ import "@/Components/Common/Content_modal.scss";
 export default function ContentPost({todayDate, categoryName} :{todayDate :string, categoryName :string}) {
   const [text, setText] = useState("");
   const [money, setMoney] = useState(0);
-  // const [whatYear, setWhatYear] = useState(new Date().getFullYear());
-  // const [whatMonth, setWhatMonth] = useState(new Date().getMonth() + 1);
-  // const [today, setToday] = useState(new Date().getDate());
   const [success, setSuccess] = useState(false);
 
   /** 날짜 형태 맞추기 */
