@@ -40,3 +40,15 @@ declare interface searchParamsTypeOutput {
 declare interface CategoryProp {
   categoryName : string
 }
+
+declare type State = {
+  id: string | null;
+  description: string;
+  amount: number;
+};
+
+declare type Action =
+  | { type: "select"; id: string; description: string; amount: number }
+  | { type: "changeDescription"; description: string }
+  | { type: "changeAmount"; amount: number }
+  | { type: "reset" };
