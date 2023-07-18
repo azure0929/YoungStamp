@@ -2,6 +2,7 @@ import { useEffect, useState, useCallback, useRef } from "react";
 import generateCalendar from "@/Common/calendar";
 import "./Calendar.scss";
 import axios from "axios";
+import dayjs from "dayjs";
 
 export default function Calendar(props: Props) {
   const {
@@ -90,9 +91,7 @@ export default function Calendar(props: Props) {
                 {!(date > i || last <= i) && (
                   <span>
                     {sth.current?.get(
-                      `${year}-${month < 10 ? "0" + month : month}-${
-                        date < 10 ? "0" + date : date
-                      }`
+                      dayjs(`${year}-${month}-${date}`).format("YYYY-MM-DD")
                     )}
                   </span>
                 )}
