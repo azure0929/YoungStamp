@@ -2,10 +2,8 @@ import { useState } from "react";
 import Modal from "../Modal/Modal";
 import "@/Components/Header/Header.scss";
 import "@/Common/Styles/global.scss";
-// import Calories from "@/Routes/Calories/Calories";
 import SearchIput from "../Search/Component/SearchIput";
 import SearchCartList from "../Search/Component/SearchCartList";
-import ContentPost from "@/Components/Common/Content-post.tsx";
 import Calories from "@/Routes/Calories/Calories.tsx";
 import PretendBuy from "@/Routes/PretendBuy/Pretend-Buy.tsx";
 
@@ -13,15 +11,6 @@ export default function Header() {
   const [buy, setBuy] = useState(false);
   const [scale, setScale] = useState(false);
   const [isActive] = useState(false);
-  const [getDate, setDate] = useState("");
-  const [dietToday, setCaloryToday] = useState("");
-  const getToday = (todayDate:string) => {
-    setDate(todayDate);
-  }
-  const getCaloryToday = (caloryToday:string) => {
-    setCaloryToday(caloryToday);
-  }
-
 
   return (
     <header>
@@ -59,14 +48,12 @@ export default function Header() {
 
       {/* 샀다치고 모달 */}
       <Modal visibility={buy} toggle={setBuy}>
-        <PretendBuy getToday={getToday} />
-        <ContentPost todayDate={getDate} categoryName={"삿다치고"}/>
+        <PretendBuy />
       </Modal>
 
       {/* 나의 권장 칼로리 모달 */}
       <Modal visibility={scale} toggle={setScale}>
-        <Calories getToday={getCaloryToday} />
-        <ContentPost todayDate={dietToday} categoryName={"다이어트"} />
+        <Calories />
         <SearchCartList />
       </Modal>
     </header>

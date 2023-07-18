@@ -2,13 +2,12 @@ import { useState } from "react";
 import Calendar from "@/Components/Calendar/Calendar";
 import RemoteDate from "@/Components/Calendar/RemoteDate";
 
-export default function Calories({getToday}:PretendBuyProps) {
+export default function Calories() {
   const [tab, setDealTab] = useState("curr");
   const [today, setToday] = useState(new Date().getDate());
   const [whatYear, setWhatYear] = useState(new Date().getFullYear());
   const [whatMonth, setWhatMonth] = useState(new Date().getMonth() + 1);
-  let todayDate: string = `${whatYear}-${String(whatMonth).padStart(2, "0")}-${String(today).padStart(2, "0")}`;
-  getToday(todayDate)
+
   return (
     <>
       <div className="gender">
