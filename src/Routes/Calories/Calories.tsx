@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Calendar from "@/Components/Calendar/Calendar";
 import RemoteDate from "@/Components/Calendar/RemoteDate";
+import dayjs from "dayjs";
 
 export default function Calories() {
   const [tab, setDealTab] = useState("curr");
@@ -31,7 +32,9 @@ export default function Calories() {
         <li>지방</li>
         <li>단백질</li>
       </ul>
-      <button>달력</button>
+      <button>
+        {dayjs(`${whatYear}-${whatMonth}-${today}`).format("YYYY-MM-DD")}
+      </button>
       <RemoteDate
         month={whatMonth}
         year={whatYear}
