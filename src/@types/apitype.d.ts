@@ -4,7 +4,8 @@ declare interface ExpendType {
   userId: string,
   category: string,
   date: string,
-  description?: string,
+  description: string,
+  _id?:string
 }
 
 declare interface SearchParamsType {
@@ -23,6 +24,9 @@ declare interface CalendarDataType {
   month: string,
   userId: string
 }
+declare interface PretendBuyProps {
+  getToday: (todayDate: string) => void;
+}
 
 declare interface searchParamsTypeOutput {
   _id:string,
@@ -30,5 +34,9 @@ declare interface searchParamsTypeOutput {
   userId:string,
   category:string,
   date:string,
-  description?:string,
+  description:string,
+}
+
+declare interface CategoryProp {
+  categoryName : string
 }

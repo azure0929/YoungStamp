@@ -2,10 +2,10 @@ import { useState } from "react";
 import Modal from "../Modal/Modal";
 import "@/Components/Header/Header.scss";
 import "@/Common/Styles/global.scss";
-import Calories from "@/Routes/Calories/Calories";
-import PretendBuyPost from "@/Components/PretendBuy/PretendBuy-post.tsx";
 import SearchIput from "../Search/Component/SearchIput";
 import SearchCartList from "../Search/Component/SearchCartList";
+import Calories from "@/Routes/Calories/Calories.tsx";
+import PretendBuy from "@/Routes/PretendBuy/Pretend-Buy.tsx";
 
 export default function Header() {
   const [buy, setBuy] = useState(false);
@@ -48,13 +48,12 @@ export default function Header() {
 
       {/* 샀다치고 모달 */}
       <Modal visibility={buy} toggle={setBuy}>
-        <PretendBuyPost />
+        <PretendBuy />
       </Modal>
 
       {/* 나의 권장 칼로리 모달 */}
       <Modal visibility={scale} toggle={setScale}>
         <Calories />
-        <PretendBuyPost />
         <SearchCartList />
       </Modal>
     </header>

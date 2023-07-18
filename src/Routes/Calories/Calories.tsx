@@ -7,7 +7,7 @@ export default function Calories() {
   const [today, setToday] = useState(new Date().getDate());
   const [whatYear, setWhatYear] = useState(new Date().getFullYear());
   const [whatMonth, setWhatMonth] = useState(new Date().getMonth() + 1);
-  console.log(whatYear, whatMonth, today);
+
   return (
     <>
       <div className="gender">
