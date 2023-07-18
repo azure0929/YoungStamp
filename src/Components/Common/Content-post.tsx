@@ -19,7 +19,6 @@ export default function ContentPost({todayDate, categoryName} :{todayDate :strin
     useMutation((postData: ExpendType) => postExpense(postData), {
       onSuccess: () => queryClient.invalidateQueries(["searchData"])
     });
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 

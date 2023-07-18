@@ -10,6 +10,7 @@ export default function ContentList(props: { date: string, category: string }) {
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState(0);
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [localData, setLocalData] = useState<ExpendType | null>(null);
   // const [amount, setAmount] = useState();
   /** use Query fetch 부분 */
   const queryClient = useQueryClient();
@@ -40,21 +41,21 @@ export default function ContentList(props: { date: string, category: string }) {
   const handleChange = (id: string, e: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedId(id);
     const target = e.target as HTMLInputElement;
-
+    const item = searchData.find((item:ExpendType) => item._id === id);
     if (target.id === 'description') {
       setDescription(target.value);
-      const item = searchData.find((item:ExpendType) => item._id === id);
       const data = item ? { ...item, description: target.value } : null;
-      if(data) {
-        changeExpend.mutate({id, data});
-      }
+      setLocalData(data);
     } else {
       setAmount(Number(target.value));
-      const item = searchData.find((item:ExpendType) => item._id === id);
       const data = item ? { ...item, amount: Number(target.value) } : null;
-      if(data) {
-        changeExpend.mutate({id, data});
-      }
+      setLocalData(data);
+    }
+  };
+  const handleSubmit = (id: string) => {
+    if (localData) {
+      changeExpend.mutate({id, data: localData});
+      setLocalData(null);
     }
   };
 
@@ -95,7 +96,7 @@ export default function ContentList(props: { date: string, category: string }) {
                   type="text"
                   value={selectedId === item._id ? amount : item.amount}
                 />
-
+                <button onClick={() => handleSubmit(item._id)}>수정</button>
                 <TiDeleteOutline onClick={() => handleDelete(item._id)} />
               </li>
             );
