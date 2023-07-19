@@ -46,7 +46,7 @@ const MonthlySavings: React.FC<MonthlySavingsProps> = ({ activeMonth }) => {
             "Content-Type": "application/json",
           },
         });
-        console.log(response);
+        // console.log(response);
         setPeriod(response.data);
         setChartData(response.data);
       } catch (error) {
@@ -57,7 +57,7 @@ const MonthlySavings: React.FC<MonthlySavingsProps> = ({ activeMonth }) => {
     fetchData();
   }, []);
 
-  console.log(chartData);
+  // console.log(chartData);
 
   return (
     <div className="chart">
