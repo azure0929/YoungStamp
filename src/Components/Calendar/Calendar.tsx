@@ -41,6 +41,7 @@ export default function Calendar(props: Props) {
   //const today = new Date().getDate();
   const sth = useRef<Map<string, number>>();
 
+
   async function tempApi() {
     try {
       const res = await axios.get("/kdt5/expenses/summary", {
@@ -48,9 +49,6 @@ export default function Calendar(props: Props) {
           period: "daily",
           userId: "team6",
           category: category,
-        },
-        headers: {
-          "Content-Type": "application/json",
         },
       });
       const data: ResponseCalendar[] = res.data;
@@ -60,6 +58,7 @@ export default function Calendar(props: Props) {
       console.log(err);
     }
   }
+
 
   return (
     <div className="calendar">
