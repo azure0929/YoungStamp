@@ -41,21 +41,27 @@ export default function ContentList(props: { date: string, category: string }) {
 
   const deleteExpend =
     useMutation((id: string) => deleteExpense(id), {
-      onSuccess: () => queryClient.invalidateQueries(["searchData"])
+      onSuccess: () => {
+        queryClient.invalidateQueries(["searchData"]);
+        queryClient.invalidateQueries(["summaryData"]);
+      }
     });
   const changeExpend =
     useMutation(({ id, data }: { id: string, data: ExpendType }) => putChange(id, data), {
-      onSuccess: () => queryClient.invalidateQueries(["searchData"])
+      onSuccess: () => {
+        queryClient.invalidateQueries(["searchData"]);
+        queryClient.invalidateQueries(["summaryData"]);
+      }
     });
   /** use Query 부분 끝  (staleTime 1분 설정) */
 
-  const handleChange = (id: string, e:React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (id: string, e: React.ChangeEvent<HTMLInputElement>) => {
     const target = e.target as HTMLInputElement;
     if (state.id !== id) {
       const index = searchData.findIndex((item: ExpendType) => item._id === id);
       const item = searchData[index];
       dispatch({ type: "select", id, description: item.description, amount: item.amount });
-      setIsDiv({...isDiv, [id]: true });
+      setIsDiv({ ...isDiv, [id]: true });
       // console.log({isDiv});
     } else {
       if (target.id === "description") {
@@ -77,8 +83,8 @@ export default function ContentList(props: { date: string, category: string }) {
           amount: state.amount
         }
       });
-      dispatch({type: "reset" });
-      setIsDiv({...isDiv, [id]: false });
+      dispatch({ type: "reset" });
+      setIsDiv({ ...isDiv, [id]: false });
     }
   };
 
@@ -94,13 +100,13 @@ export default function ContentList(props: { date: string, category: string }) {
 
   return (
     <div>
-      <ul className={'pretend-list'}>
+      <ul className={"pretend-list"}>
         {searchData.map((item: searchParamsTypeOutput) => {
           if (item.date === props.date) {
             return (
               <ContentListItem
                 isDiv={isDiv} state={state} item={item}
-                handleChange={handleChange} handleSubmit={handleSubmit} handleDelete={handleDelete}/>
+                handleChange={handleChange} handleSubmit={handleSubmit} handleDelete={handleDelete} />
             );
           }
           return null;

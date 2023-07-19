@@ -14,7 +14,10 @@ export default function ContentPost({ todayDate, categoryName }: { todayDate: st
   const queryClient = useQueryClient();
   const addExpend =
     useMutation((postData: ExpendType) => postExpense(postData), {
-      onSuccess: () => queryClient.invalidateQueries(["searchData"])
+      onSuccess: () => {
+        queryClient.invalidateQueries(["searchData"])
+        queryClient.invalidateQueries(["summaryData"])
+      }
     });
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -39,7 +42,6 @@ export default function ContentPost({ todayDate, categoryName }: { todayDate: st
       <div className={"img-button"}>
         <AiFillPlusCircle
           className={"plus-button"}
-          // style={isFromVisible ?{ display: "none" } : {}}
           onClick={() => {
             setIsFromVisible(!isFromVisible);
           }} />

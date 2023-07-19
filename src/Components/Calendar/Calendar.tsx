@@ -1,7 +1,10 @@
 import { useEffect, useState, useCallback, useRef } from "react";
 import generateCalendar from "@/Common/calendar";
 import "./Calendar.scss";
-import axios from "axios";
+// import axios from "axios";
+// import dayjs from "dayjs";
+import { useQuery, } from "@tanstack/react-query";
+import { getSummary } from "@/Api/api.ts";
 import dayjs from "dayjs";
 
 export default function Calendar(props: Props) {
@@ -13,7 +16,7 @@ export default function Calendar(props: Props) {
     today,
     setToday,
     category,
-    backgroundColor,
+    backgroundColor
   } = props;
   const [totalDates, setTotalDates] = useState<number[]>([]);
   const makeCalendar = useCallback(
@@ -31,34 +34,53 @@ export default function Calendar(props: Props) {
       setMonth(1);
     }
     makeCalendar(year, month);
-
-    (async () => {
-      await tempApi();
-    })();
+    // (async () => {
+    //   await tempApi();
+    // })();
   }, [month, year]);
 
   const dayList = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   //const today = new Date().getDate();
   const sth = useRef<Map<string, number>>();
 
-
-  async function tempApi() {
-    try {
-      const res = await axios.get("/kdt5/expenses/summary", {
-        params: {
-          period: "daily",
-          userId: "team6",
-          category: category,
-        },
-      });
-      const data: ResponseCalendar[] = res.data;
+  const params: SummaryType = {
+    period: "daily",
+    userId: "team6",
+    category: category
+  };
+  const { isLoading, error, data: summaryData }
+    = useQuery(["summaryData", params], () => {
+    return getSummary(params).then((res) => {
+      const data: ResponseCalendar[] = res;
       const arr: CalendarMap[] = data.map((v) => [v._id, v.totalAmount]);
       sth.current = new Map<string, number>(arr);
-    } catch (err) {
-      console.log(err);
-    }
-  }
+      return sth.current;
+    });
+  },{staleTime: 1000*60});
 
+
+  // async function tempApi() {
+  //   try {
+  //     const res = await axios.get("/kdt5/expenses/summary", {
+  //       params: {
+  //         period: "daily",
+  //         userId: "team6",
+  //         category: category
+  //       }
+  //     });
+  //     const data: ResponseCalendar[] = res.data;
+  //     const arr: CalendarMap[] = data.map((v) => [v._id, v.totalAmount]);
+  //     sth.current = new Map<string, number>(arr);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }
+
+  if (isLoading) {
+    return "Loading...";
+  } else if (error instanceof Error) {
+    return `An error has occurred: ${error.message}`;
+  }
 
   return (
     <div className="calendar">
@@ -79,7 +101,7 @@ export default function Calendar(props: Props) {
                   last <= i && last != -1 ? "gray" : ""
                 } ${date === today ? "today" : ""}`}
                 style={{
-                  backgroundColor: date === today ? backgroundColor : "",
+                  backgroundColor: date === today ? backgroundColor : ""
                 }}
                 onClick={() => {
                   setToday(date);
@@ -89,9 +111,11 @@ export default function Calendar(props: Props) {
                 <div>{date}</div>
                 {!(date > i || last <= i) && (
                   <span>
-                    {sth.current?.get(
-                      dayjs(`${year}-${month}-${date}`).format("YYYY-MM-DD")
-                    )}
+                    {/*<CalendarAmount date={date} summaryData={summaryData} />*/}
+                    {summaryData?.get(dayjs(`${year}-${month}-${date}`).format("YYYY-MM-DD"))?.toLocaleString()}
+                   {/*{summaryData*/}
+                   {/*  ?.get(dayjs(`${year}-${month}-${date}`).format("YYYY-MM-DD"))*/}
+                   {/*}*/}
                   </span>
                 )}
               </div>
