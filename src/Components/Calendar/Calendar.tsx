@@ -111,11 +111,7 @@ export default function Calendar(props: Props) {
                 <div>{date}</div>
                 {!(date > i || last <= i) && (
                   <span>
-                    {/*<CalendarAmount date={date} summaryData={summaryData} />*/}
                     {summaryData?.get(dayjs(`${year}-${month}-${date}`).format("YYYY-MM-DD"))?.toLocaleString()}
-                   {/*{summaryData*/}
-                   {/*  ?.get(dayjs(`${year}-${month}-${date}`).format("YYYY-MM-DD"))*/}
-                   {/*}*/}
                   </span>
                 )}
               </div>

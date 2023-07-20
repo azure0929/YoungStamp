@@ -1,24 +1,16 @@
-import { postExpense } from "@/Api/api.ts";
 import { useState } from "react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import ContentList from "@/Components/Common/Content-list.tsx";
 import "@/Components/Common/Content_modal.scss";
 import { AiFillPlusCircle } from "react-icons/ai";
+import useDataQuery from "@/Hooks/useData-Query.tsx";
 
 export default function ContentPost({ todayDate, categoryName }: { todayDate: string, categoryName: string }) {
   const [text, setText] = useState("");
   const [money, setMoney] = useState(0);
   const [isFromVisible, setIsFromVisible] = useState(false);
+  const { addExpend} = useDataQuery();
 
-  /** use Query 부분 */
-  const queryClient = useQueryClient();
-  const addExpend =
-    useMutation((postData: ExpendType) => postExpense(postData), {
-      onSuccess: () => {
-        queryClient.invalidateQueries(["searchData"])
-        queryClient.invalidateQueries(["summaryData"])
-      }
-    });
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const postData: ExpendType =
