@@ -2,12 +2,15 @@ import { useState } from "react";
 import Calendar from "@/Components/Calendar/Calendar";
 import RemoteDate from "@/Components/Calendar/RemoteDate";
 import dayjs from "dayjs";
+import ContentPost from "@/Components/Common/Content-post.tsx";
 
 export default function Calories() {
   const [tab, setDealTab] = useState("curr");
   const [today, setToday] = useState(new Date().getDate());
   const [whatYear, setWhatYear] = useState(new Date().getFullYear());
   const [whatMonth, setWhatMonth] = useState(new Date().getMonth() + 1);
+
+  let todayDate: string = `${whatYear}-${String(whatMonth).padStart(2, "0")}-${String(today).padStart(2, "0")}`;
 
   return (
     <>
@@ -52,6 +55,7 @@ export default function Calories() {
         category={"칼로리"}
         backgroundColor={"var(--primary1)"}
       />
+      <ContentPost todayDate={todayDate} categoryName={"칼로리"}/>
     </>
   );
 }

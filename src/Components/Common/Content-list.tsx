@@ -1,8 +1,6 @@
-import { deleteExpense, getSearchExpense, putChange } from "@/Api/api.ts";
-import dayjs from "dayjs";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useReducer, useState } from "react";
 import { ContentListItem } from "@/Components/Common/Content-list-item.tsx";
+import useDataQuery from "@/Hooks/useData-Query.tsx";
 
 const reducer = (state: State, action: Action): State => {
   switch (action.type) {
@@ -22,39 +20,13 @@ const reducer = (state: State, action: Action): State => {
 export default function ContentList(props: { date: string, category: string }) {
   const [state, dispatch] = useReducer(reducer, { id: null, description: "", amount: 0 });
   const [isDiv, setIsDiv] = useState<Record<string, boolean>>({});
+  const {changeExpend, deleteExpend} = useDataQuery()
 
-  /** use Query fetch 부분 */
-  const queryClient = useQueryClient();
   const params: SearchParamsType = {
     q: props.category,
     userId: "team6"
   };
-  const { isLoading, error, data: searchData }
-    = useQuery(["searchData", params], () => {
-    return getSearchExpense(params).then((res) => {
-      return res.map((item: searchParamsTypeOutput) => ({
-        ...item,
-        date: dayjs(item.date).format("YYYY-MM-DD")
-      }));
-    });
-  }, { staleTime: 1000 * 60 });
-
-  const deleteExpend =
-    useMutation((id: string) => deleteExpense(id), {
-      onSuccess: () => {
-        queryClient.invalidateQueries(["searchData"]);
-        queryClient.invalidateQueries(["summaryData"]);
-      }
-    });
-  const changeExpend =
-    useMutation(({ id, data }: { id: string, data: ExpendType }) => putChange(id, data), {
-      onSuccess: () => {
-        queryClient.invalidateQueries(["searchData"]);
-        queryClient.invalidateQueries(["summaryData"]);
-      }
-    });
-  /** use Query 부분 끝  (staleTime 1분 설정) */
-
+  const { getSearchData : {isLoading, error, data: searchData} } = useDataQuery(params)
   const handleChange = (id: string, e: React.ChangeEvent<HTMLInputElement>) => {
     const target = e.target as HTMLInputElement;
     if (state.id !== id) {
@@ -62,7 +34,6 @@ export default function ContentList(props: { date: string, category: string }) {
       const item = searchData[index];
       dispatch({ type: "select", id, description: item.description, amount: item.amount });
       setIsDiv({ ...isDiv, [id]: true });
-      // console.log({isDiv});
     } else {
       if (target.id === "description") {
         dispatch({ type: "changeDescription", description: target.value });
