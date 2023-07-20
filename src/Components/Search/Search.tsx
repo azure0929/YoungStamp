@@ -4,8 +4,6 @@ import { FoodKeywordContext } from "@/Store/SearchContext";
 import { useContext, useEffect, useState } from "react";
 import SearchItem from "@/Components/Search/Component/SearchItem";
 import SearchPaging from "@/Components/Search/Component/SearchPaging";
-import { useQuery } from "@tanstack/react-query";
-import { v4 as uuidv4 } from 'uuid';
 
 function SearchPage() {
   const [count, setCount] = useState(10); //아이템 총 개수
@@ -22,35 +20,35 @@ function SearchPage() {
     setCurrentPage(error);
   };
 
-  const {isLoading, error, data:caloryData}
-    = useQuery(['caloryData',keyword], ()=>{
-      return dataApi(keyword).then((res)=>{
-        const data = res.body.items; //타입스크립트 수정 준비
-        const calorys = data.map((item:FoodItem) => ({...item, check: false, id: uuidv4()}));
-        setFoodlist(calorys);
-        setCount(data.length);
-        return calorys;
-      })
-  })
-  // console.log(caloryData);
+  // const {isLoading, error, data:caloryData}
+  //   = useQuery(['caloryData',keyword], ()=>{
+  //     return dataApi(keyword).then((res)=>{
+  //       const data = res.body.items; //타입스크립트 수정 준비
+  //       const calorys = data.map((item:FoodItem) => ({...item, check: false, id: uuidv4()}));
+  //       setFoodlist(calorys);
+  //       setCount(data.length);
+  //       return calorys;
+  //     })
+  // })
+  // // console.log(caloryData);
 
 
-  //유즈파람 수정하기
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await dataApi(keyword);
-  //       const datas = response?.body.items; //타입스크립트 수정 준비
-  //       const imsi = datas.map((item) => ({...item, check: false}))
-  //       console.log(imsi);
-  //       setFoodlist(imsi);
-  //       setCount(datas.length);
-  //     } catch (error) {
-  //       console.error("음식정보 리스트 영역 오류", error);
-  //     }
-  //   };
-  //   void fetchData();
-  // }, [keyword]);
+  // 유즈파람 수정하기
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await dataApi(keyword);
+        const datas = response?.body.items; //타입스크립트 수정 준비
+        const imsi = datas.map((item) => ({...item, check: false}))
+        console.log(imsi);
+        setFoodlist(imsi);
+        setCount(datas.length);
+      } catch (error) {
+        console.error("음식정보 리스트 영역 오류", error);
+      }
+    };
+    void fetchData();
+  }, [keyword]);
 
   useEffect(() => {
     setIndexOfLastPost(currentPage * postPerPage); //현재 페이지와 한 페이지에 보여질 아이템 수를 곱하여 결과 값을 setIndexOfLastPost에 넘긴다. -> 마지막 포스트 수는 3
@@ -58,11 +56,7 @@ function SearchPage() {
     setCurrentPosts(foodlist.slice(indexOfFirstPost, indexOfLastPost)); //products의 배열을 현재 페이지의 첫번째와 마지막에 인덱스까지 값을 복사, 반환하여 setCurrentPosts에 전달
   }, [currentPage, indexOfLastPost, indexOfFirstPost, postPerPage, foodlist]); //위에 기능이 끝나면 배열 안의 결과들을 한 번 실행
 
-  if (isLoading) {
-    return "Loading...";
-  } else if (error instanceof Error) {
-    return `An error has occurred: ${error.message}`;
-  }
+
   return (
     <div className="Container">
       <div className="SearchBar">
@@ -75,7 +69,7 @@ function SearchPage() {
       </div>
       <div className="CardContainer">
         {currentPosts && currentPosts.length > 0 ? (
-          caloryData.map((item, index) => {
+          currentPosts.map((item, index) => {
             return (
               <SearchItem
                 key={index} //배열 번호로 사용
