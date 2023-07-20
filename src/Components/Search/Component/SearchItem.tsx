@@ -23,7 +23,7 @@ function SearchItem(item: Item) {
     setAddFoodItem(newItem);
   };
 
-  체크 기능 체크상태는 매개로 받은 addfood를 checkedList 배열에 추가하고 setCheckedList에 담아 보낸다 그리고 addfood()를 실행한다.
+  //체크 기능 체크상태는 매개로 받은 addfood를 checkedList 배열에 추가하고 setCheckedList에 담아 보낸다 그리고 addfood()를 실행한다.
   const onChecked = (checked: boolean) => {
     if (checked) {
       //체크박스에 체크가 되면 addfood()동작되고 이 기능은 음식정보를 새로운 변수에 담는다
@@ -38,27 +38,15 @@ function SearchItem(item: Item) {
       setDelFoodItem(item.id)
     }
   };
-  const handleChecked = (id:number, e:React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.checked);
-    console.log(id);
-  }
-
 
   return (
     <>
       <div className="ItemContainer">
         <div className="TitleBox">
-          {/*<div className="ItemNumber">{item.id}</div>*/}
-          <input
-            type="checkbox"
-            className="AddBtn"
-            checked={item.check}
-            // onChange={e => {onChecked(e.target.checked)}}
-            onChange={(e)=>handleChecked(item.id, e as any)}
-          />
-
+          <div className="ItemNumber">{item.id}</div>
+          <input type="checkbox" className="AddBtn" onChange={e => {onChecked(e.target.checked)}}>
+          </input>
         </div>
-        <div>{item.check}</div>
         <div className="ItemTitle">{item.title}</div>
         <div className="ItemInfoBox">
           <span>당류: {item.sugar}g</span>

@@ -20,28 +20,13 @@ function SearchPage() {
     setCurrentPage(error);
   };
 
-  // const {isLoading, error, data:caloryData}
-  //   = useQuery(['caloryData',keyword], ()=>{
-  //     return dataApi(keyword).then((res)=>{
-  //       const data = res.body.items; //타입스크립트 수정 준비
-  //       const calorys = data.map((item:FoodItem) => ({...item, check: false, id: uuidv4()}));
-  //       setFoodlist(calorys);
-  //       setCount(data.length);
-  //       return calorys;
-  //     })
-  // })
-  // // console.log(caloryData);
-
-
-  // 유즈파람 수정하기
+  //유즈파람 수정하기
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await dataApi(keyword);
         const datas = response?.body.items; //타입스크립트 수정 준비
-        const imsi = datas.map((item) => ({...item, check: false}))
-        console.log(imsi);
-        setFoodlist(imsi);
+        setFoodlist(datas);
         setCount(datas.length);
       } catch (error) {
         console.error("음식정보 리스트 영역 오류", error);
@@ -55,7 +40,6 @@ function SearchPage() {
     setIndexOfFirstPost(indexOfLastPost - postPerPage); //indexOfLastPost의 값과 한 페이지에 보여질 아이템 수를 뺀다 그 결과를 setIndexOfFirstPost에 전달 -> 첫번째 포스트는 0
     setCurrentPosts(foodlist.slice(indexOfFirstPost, indexOfLastPost)); //products의 배열을 현재 페이지의 첫번째와 마지막에 인덱스까지 값을 복사, 반환하여 setCurrentPosts에 전달
   }, [currentPage, indexOfLastPost, indexOfFirstPost, postPerPage, foodlist]); //위에 기능이 끝나면 배열 안의 결과들을 한 번 실행
-
 
   return (
     <div className="Container">
