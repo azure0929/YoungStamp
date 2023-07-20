@@ -22,6 +22,7 @@ declare interface Item {
   sugar: number;
   sodium: number;
   serving: number;
+  check: boolean;
 }
 
 /** 설명 */
@@ -42,6 +43,7 @@ declare interface FoodAddContextType {
   /** 설명 */
   addFoodItem: {
     id: number;
+    check:boolean;
     title: string;
     calories: number;
     carbs: number;

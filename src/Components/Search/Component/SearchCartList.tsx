@@ -17,14 +17,15 @@ function SearchCartList() {
       sugar: number;
       sodium: number;
       serving: number;
+      check: boolean;
       id: number;
     }[]
   >([]);
 
   /** 음식정보를 받아 새로운 배열에 담고 랜더링하는 기능, 결과 데이터는 칼로리 페이지에 표시된다. */
   useEffect(() => {
-    console.log("현재 추가한 음식", addFoodItem);
-    console.log("인덱스 번호 확인", delFoodItem);
+    // console.log("현재 추가한 음식", addFoodItem);
+    // console.log("인덱스 번호 확인", delFoodItem);
     // 만약에 배개변수가 addFoodItem이면 addFoodItem의 객체 데이터를
     // newItem란 새로운 변수를 담는다. 여기에는 음식정보의 값들이 들어있다.
     if (addFoodItem) {
@@ -38,6 +39,7 @@ function SearchCartList() {
         sugar: addFoodItem.sugar,
         sodium: addFoodItem.sodium,
         serving: addFoodItem.serving,
+        check: false,
         id: addFoodItem.id,
       };
 

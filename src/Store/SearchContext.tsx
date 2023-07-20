@@ -19,6 +19,7 @@ export const FoodAddsContext = createContext<FoodAddContextType>({
     sugar: 0,
     sodium: 0,
     serving: 0,
+    check:false,
     id: 0,
   },
   setAddFoodItem: () => {},
