@@ -1,100 +1,20 @@
 header {
+  background: url("/images/header-back.png") no-repeat center;
   .inner {
-    width: calc(100% - 260px);
-    height: 220px;
+    max-width: 1200px;
+    height: 236px;
     display: flex;
+    gap: 32px;
     align-items: center;
+    justify-content: center;
+    flex-direction: column;
     margin: 0 auto;
     .logo {
-      margin-right: 70px;
-      width: 160px;
+      width: 234px;
       img {
         width: 100%;
         display: block;
       }
-    }
-    .gnb {
-      width: 1200px;
-      display: flex;
-      justify-content: space-between;
-      .buycomplete {
-        width: 130px;
-        height: 46px;
-        button {
-          width: 100%;
-          height: 100%;
-          color: #fff;
-          background-color: var(--primary2);
-          &.active {
-            background-color: #338f66;
-          }
-        }
-      }
-      .search {
-        position: relative;
-        width: 430px;
-        input {
-          border: 1px solid var(--text);
-          font-family: "Noto Sans KR";
-          font-size: 16px;
-          letter-spacing: -.05em;
-          width: 100%;
-          border-radius: 30px;
-          height: 46px;
-          padding: 0 20px;
-          transition: .2s;
-          &:focus {
-            outline: none;
-            color: var(--text);
-            border-color: var(--primary1);
-          }
-          &::placeholder {
-            color: var(--text2);
-          }
-        }
-        img {
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          right: 20px;
-        }
-      }
-      .myinfo {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        p {
-          display: block;
-          font-family: "Noto Sans KR";
-          font-size: 18px;
-          font-weight: 500;
-          letter-spacing: -.05em;
-        }
-        .scalebtn {
-          width: 28px;
-          height: 28px;
-          button {
-            width: 100%;
-            height: 100%;
-            background: url("/images/scale.png") no-repeat;
-          }
-        }
-      }
-    }
-  }
-}
-
-.gender {
-  display: flex;
-  gap: 20px;
-  button {
-    width: 256px;
-    height: 56px;
-    color: var(--text);
-    background-color: #f3f3f3;
-    &.active {
-      color: #fff;
-      background-color: var(--primary1);
     }
   }
 }
