@@ -4,6 +4,15 @@ import "@/Routes/Main/Main.scss";
 import DailyChart from "@/Components/Chart/Daily/DailyChart";
 import WeeklyChart from "@/Components/Chart/Weekly/WeeklyChart";
 import MonthlyChart from "@/Components/Chart/Monthly/MonthlyChart";
+import Modal from "@/Components/Modal/Modal";
+import SearchCartList from "@/Components/Search/Component/SearchCartList";
+import Calories from "@/Routes/Calories/Calories";
+import PretendBuy from "@/Routes/PretendBuy/Pretend-Buy";
+import { MdOutlineAddCard } from "react-icons/md";
+import { MdDonutLarge } from "react-icons/md";
+import { MdOutlineCalendarMonth } from "react-icons/md";
+import { MdOutlineDateRange } from "react-icons/md";
+import { MdCalendarToday } from "react-icons/md";
 
 export default function Main() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -16,6 +25,8 @@ export default function Main() {
   const [months, setMonths] = useState<string[]>([]);
   const [weeks, setWeeks] = useState<string[]>([]);
   const [days, setDays] = useState<string[]>([]);
+  const [buy, setBuy] = useState(false);
+  const [scale, setScale] = useState(false);
 
   useEffect(() => {
     const currentDate = new Date();
@@ -139,13 +150,14 @@ export default function Main() {
     {
       tabTitle: (
         <li>
-          <button className={activeIndex === 0 ? "is-active" : ""} onClick={() => tabClickHandler(0)}>
+          <div role="button" className={activeIndex === 0 ? "is-active" : ""} onClick={() => tabClickHandler(0)}>
+            <MdCalendarToday size="20" />
             {activeMonth === "선택없음" ? "월간" : activeMonth}
-          </button>
+          </div>
         </li>
       ),
       tabCont: (
-        <div className="contents">
+        <div>
           <MonthlyChart activeMonth={activeMonth} />
         </div>
       ),
@@ -156,13 +168,14 @@ export default function Main() {
     {
       tabTitle: (
         <li>
-          <button className={activeIndex === 1 ? "is-active" : ""} onClick={() => tabClickHandler(1)}>
+          <div role="button" className={activeIndex === 1 ? "is-active" : ""} onClick={() => tabClickHandler(1)}>
+            <MdOutlineDateRange size="20" />
             {activeWeek === "선택없음" ? "주간" : activeWeek}
-          </button>
+          </div>
         </li>
       ),
       tabCont: (
-        <div className="contents">
+        <div>
           <WeeklyChart activeWeek={activeWeek} />
         </div>
       ),
@@ -173,13 +186,14 @@ export default function Main() {
     {
       tabTitle: (
         <li>
-          <button className={activeIndex === 2 ? "is-active" : ""} onClick={() => tabClickHandler(2)}>
+          <div role="button" className={activeIndex === 2 ? "is-active" : ""} onClick={() => tabClickHandler(2)}>
+            <MdOutlineCalendarMonth size="20" />
             {activeDaily === "선택없음" ? "일간" : activeDaily}
-          </button>
+          </div>
         </li>
       ),
       tabCont: (
-        <div className="contents">
+        <div>
           <DailyChart activeDaily={activeDaily} />
         </div>
       ),
@@ -191,36 +205,76 @@ export default function Main() {
 
   return (
     <div>
-      <div className="daychart">
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <ul className="tabs is-boxed">
-            {tabContArr.map((section) => section.tabTitle)}
-          </ul>
-          <div className="choose">
-            <div className={`dropdown-wrapper${tabContArr[activeIndex].isOpen ? " is-active" : ""}`}>
-              <button
-                type="button"
-                className={`dropdown-toggle${tabContArr[activeIndex].isOpen ? " is-active" : ""}`}
-                onClick={tabContArr[activeIndex].dropdownToggle}
-              >
-                {activeMonth === "선택없음"
-                  ? activeWeek === "선택없음"
-                    ? activeDaily === "선택없음"
-                      ? "선택없음"
-                      : activeDaily
-                    : activeWeek
-                  : activeMonth}{" "}
-                {tabContArr[activeIndex].isOpen ? <AiOutlineUp /> : <AiOutlineDown />}
-              </button>
-              {tabContArr[activeIndex].dropdownContent}
+      <div className="modal-contents">
+        <p>
+          영스템프<span>(YoungStemp)</span>는 당신의 소중한 건강과 소비를 관리합니다
+        </p>
+        <div className="modal-select">
+          <div className="buy" role="button" onClick={() => { setBuy(true); }}>
+            <div className="mdicon">
+              <MdOutlineAddCard size="60"/>
+            </div>
+            <div className="select-detail">
+              <h4>습관 소비를 줄여 절약하자</h4>
+              <h3>나의 절약 기록</h3>
+            </div>
+          </div>
+          <div className="scale" role="button" onClick={() => { setScale(true); }}>
+            <div className="mdicon">
+              <MdDonutLarge size="60"/>
+            </div>
+            <div className="select-detail">
+              <h4>나의 음식 칼로리를 관리하자</h4>
+              <h3>음식 칼로리 기록</h3>
             </div>
           </div>
         </div>
-        <div>{tabContArr[activeIndex].tabCont}</div>
+      </div>
+
+      <Modal visibility={buy} toggle={setBuy}>
+        <PretendBuy />
+      </Modal>
+
+      <Modal visibility={scale} toggle={setScale}>
+        <Calories />
+        <SearchCartList />
+      </Modal>
+
+      <div className="daychart">
+        <div className="daychart-contents">
+          <div className="chart-top">
+            <ul className="tabs is-boxed">
+              {tabContArr.map((section) => section.tabTitle)}
+            </ul>
+            <div className="choose">
+              <div className={`dropdown-wrapper${tabContArr[activeIndex].isOpen ? " is-active" : ""}`}>
+                <button
+                  type="button"
+                  className={`dropdown-toggle${tabContArr[activeIndex].isOpen ? " is-active" : ""}`}
+                  onClick={tabContArr[activeIndex].dropdownToggle}
+                >
+                  {activeMonth === "선택없음"
+                    ? activeWeek === "선택없음"
+                      ? activeDaily === "선택없음"
+                        ? "선택없음"
+                        : activeDaily
+                      : activeWeek
+                    : activeMonth}{" "}
+                  {tabContArr[activeIndex].isOpen ? <AiOutlineUp /> : <AiOutlineDown />}
+                </button>
+                {tabContArr[activeIndex].dropdownContent}
+              </div>
+            </div>
+          </div>
+          {tabContArr[activeIndex].tabCont}
+        </div>
       </div>
       <div className="youtube">
-        {/* 임시 내용 */}
-        youtube
+        <p><span>유튜브</span> 추천 운동 영상</p>
+        <div className="youtube-contents">
+          <div>내용을 넣어주세요.</div>
+          {/* 내용 */}
+        </div>
       </div>
     </div>
   );

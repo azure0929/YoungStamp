@@ -3,14 +3,7 @@ import { Bar } from "react-chartjs-2";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
+ChartJS.register( CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend );
 
 interface DailySavings {
   _id: string;
@@ -59,27 +52,40 @@ const DailySavings: React.FC<DailyChartProps> = ({ activeDaily }) => {
   console.log(chartData);
 
   return (
-    <div className="chart">
-      {chartData && (
-        <div>
-          <Bar
-            data={{
-              labels: activeDaily === "선택없음" ? chartData.map((item) => item._id) : [activeDaily],
-              datasets: [
-                {
-                  label: "일간 저축양",
-                  data: activeDaily === "선택없음" ? chartData.map((item) => item.totalAmount) : [chartData.find((item) => item._id === activeDaily)?.totalAmount || 0],
-                  backgroundColor: "rgba(92, 187, 144, 0.8)",
-                  borderColor: "rgba(92, 187, 144, 1)",
-                  borderWidth: 1,
-                },
-              ],
-            }}
-          />
-        </div>
-      )}
+    <div className="chart-contents">
+      <p><span>일간</span> 저축양</p>
+      <div className="chart">
+        {chartData && (
+          <div>
+            <Bar
+              data={{
+                labels: activeDaily === "선택없음" ? chartData.map((item) => item._id) : [activeDaily],
+                datasets: [
+                  {
+                    label: "총 저축양",
+                    data: activeDaily === "선택없음" ? chartData.map((item) => item.totalAmount) : [chartData.find((item) => item._id === activeDaily)?.totalAmount || 0],
+                    backgroundColor: "rgba(92, 187, 144, 0.8)",
+                    borderColor: "rgba(92, 187, 144, 1)",
+                    borderWidth: 1
+                  },
+                ],
+              }}
+              options={{
+                responsive: true,
+                maintainAspectRatio: false,
+                layout: {
+                  padding: {
+                    left: 30,
+                    right: 30
+                  }
+                }
+              }}
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
-}
+};
 
 export default DailySavings;
