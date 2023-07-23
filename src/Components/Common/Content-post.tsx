@@ -45,7 +45,7 @@ export default function ContentPost({ todayDate, categoryName }: { todayDate: st
           <div>
             <input
               className={"content-input"}
-              placeholder="참은행동이나물건을입력해주세요"
+              placeholder="참은 행동이나 물건을 입력해주세요"
               id="product"
               onChange={handleChange}
               value={text}
@@ -64,7 +64,7 @@ export default function ContentPost({ todayDate, categoryName }: { todayDate: st
             />
           </div>
           <div className={"buttons"}>
-            <button className={"addButton"} type={"submit"}>추가하기</button>
+            <button className={"addButton"} type={"submit"}>추가</button>
           </div>
         </form>}
     </div>

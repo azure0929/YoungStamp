@@ -2,7 +2,7 @@
   //background-color: var(--primary2);
   padding: 18px 0;
   width: 100%;
-
+  color: #fff;
   button {
     background-color: transparent;
     width: 12px;
@@ -10,7 +10,8 @@
   .controll {
     display: flex;
     justify-content: center;
-    width: 420px;
+    max-width: 420px;
+    width: 100%;
     margin: auto;
     position: relative;
   }

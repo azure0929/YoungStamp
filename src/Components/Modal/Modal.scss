@@ -26,11 +26,19 @@
   align-items: center;
   border-radius: 12px;
   overflow: hidden;
-  //padding: 30px;
+  padding-bottom: 30px;
 }
 .modal-close {
   //position: absolute;
   bottom: 10px;
+  max-width: 410px;
+  height: 46px;
   width: 100%;
   margin: auto;
+  transition: .2s;
+  color: #fff;
+  &:hover {
+    color: #fff;
+    background-color: var(--primary2);
+  }
 }
