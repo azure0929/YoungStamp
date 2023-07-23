@@ -21,7 +21,7 @@ export default function Modal(props: PropsWithChildren<ModalProps>) {
             props.toggle(false);
           }}
         >
-          close
+          닫기
         </button>
       </div>
     </div>
