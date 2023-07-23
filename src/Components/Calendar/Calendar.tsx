@@ -39,7 +39,7 @@ export default function Calendar(props: Props) {
     // })();
   }, [month, year]);
 
-  const dayList = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const dayList = ["SU", "MO", "TU", "WE", "TH", "FR", "SA"];
   //const today = new Date().getDate();
   const sth = useRef<Map<string, number>>();
 
