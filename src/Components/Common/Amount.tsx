@@ -17,7 +17,7 @@ export const Amount: React.FC<DescriptionProps>
         <div
           id={id}
         >
-          {item.amount.toLocaleString()}
+          {item.amount.toLocaleString()}원
         </div>
       }
     </>
