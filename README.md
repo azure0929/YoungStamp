@@ -2,7 +2,7 @@
  검색어 자동완성 사이트 및 소비패턴 기록 서비스 구현, 팀 프로젝트
 # '영스템프(YoungStamp)'
 
-<img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=React&logoColor=white" />
+<img src="https://user-images.githubusercontent.com/106785596/255562534-8bee0394-5790-4759-9ff8-e74f21b9c680.png" />
 
 #### '나의 절약 기록'에 구매를 하거나 어떤 소비행동을 참은걸 기록하여 나의 저축한 돈을 확인 할 수 있습니다. 
 #### 더불어 '음식 칼로리 기록'을 도입하여 내가 하루에 섭취해야할 칼로리를 등록하여 다이어트 행동을 돕는 서비스입니다.
@@ -79,11 +79,22 @@ Cowork Tools
 <br>
 
 ### 1️⃣ 유저 플로우 </br>
+<img src="https://user-images.githubusercontent.com/106785596/255562651-ff310c5a-b59e-4eb3-b9bd-cc231b7099f7.png" />
+<br>
+<br>
 
+### 2️⃣ 디자인 작업 </br>
+<img src="https://user-images.githubusercontent.com/106785596/255562666-1c560354-6ddd-4b17-bd2c-2355927170fa.png" />
+<br>
 <br>
 
 ### 3️⃣ 프로젝트 스크린샷 화면 </br>
-
+<img src="https://user-images.githubusercontent.com/106785596/255562883-5351c60a-2f19-4dd5-9ba7-86a4d3133c4e.png" />
+<img src="https://user-images.githubusercontent.com/106785596/255562919-74a53eb4-3028-4b51-8f4b-887c5140addf.png" />
+<img src="https://user-images.githubusercontent.com/106785596/255562900-3ac211c9-e4eb-41fd-a0d4-fc9804c80125.png" />
+<img src="https://user-images.githubusercontent.com/106785596/255562925-b360b57f-b688-4741-81b2-a36a66b66f9e.png" />
+<img src="https://user-images.githubusercontent.com/106785596/255562937-8d443e6d-8f69-4e14-aa89-d96b0694e18e.png" />
+<br>
 <br>
 
 ### 🙏 감사합니다 </br>
