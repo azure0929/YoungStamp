@@ -13,7 +13,7 @@ import { MdDonutLarge } from "react-icons/md";
 import { MdOutlineCalendarMonth } from "react-icons/md";
 import { MdOutlineDateRange } from "react-icons/md";
 import { MdOutlineCalendarToday } from "react-icons/md";
-import Youtube from "@/Components/YouTube/Youtube";
+// import Youtube from "@/Components/YouTube/Youtube";
 
 export default function Main() {
   const [activeIndex, setActiveIndex] = useState(2);
