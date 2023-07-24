@@ -269,12 +269,12 @@ export default function Main() {
           {tabContArr[activeIndex].tabCont}
         </div>
       </div>
-      <div className="youtube">
+      {/* <div className="youtube">
         <p><span>유튜브</span> 추천 운동 영상</p>
         <div className="youtube-contents">
           <Youtube />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
