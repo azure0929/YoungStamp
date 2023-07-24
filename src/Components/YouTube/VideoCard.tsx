@@ -1,7 +1,7 @@
 import { formatAgo } from "./FormatAgo.ts";
 import { useState } from "react";
 import YouTube, { YouTubeProps } from "react-youtube";
-import "@/Components/YouTube/Youtube.scss";
+import "@/Components/YouTube/youtube.scss";
 import "@/Components/Modal/Modal.scss";
 export default function( {video}:{video:YoutubeType} ) {
   const { title, thumbnails, channelTitle, publishedAt } = video.snippet;
