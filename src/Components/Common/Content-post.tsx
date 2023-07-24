@@ -28,15 +28,9 @@ export default function ContentPost({ todayDate, categoryName }: { todayDate: st
   };
   return (
     <div className={"pretend-buy-container"}>
+      <div className="list-info">오늘 내가 절약한 소비를 입력하여 저축을 늘려보세요.</div>
       <div className={"list-container"}>
         <ContentList date={todayDate} category={categoryName} />
-      </div>
-      <div className={"img-button"}>
-        <AiFillPlusCircle
-          className={"plus-button"}
-          onClick={() => {
-            setIsFromVisible(!isFromVisible);
-          }} />
       </div>
       {isFromVisible &&
         <form
@@ -45,7 +39,7 @@ export default function ContentPost({ todayDate, categoryName }: { todayDate: st
           <div>
             <input
               className={"content-input"}
-              placeholder="참은행동이나물건을입력해주세요"
+              placeholder="절약한 상품명"
               id="product"
               onChange={handleChange}
               value={text}
@@ -64,9 +58,16 @@ export default function ContentPost({ todayDate, categoryName }: { todayDate: st
             />
           </div>
           <div className={"buttons"}>
-            <button className={"addButton"} type={"submit"}>추가하기</button>
+            <button className={"addButton"} type={"submit"}>추가</button>
           </div>
         </form>}
+        <div className={"img-button"}>
+        <AiFillPlusCircle
+          className={"plus-button"}
+          onClick={() => {
+            setIsFromVisible(!isFromVisible);
+          }} />
+      </div>
     </div>
   );
 }

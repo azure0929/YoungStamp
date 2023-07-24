@@ -9,10 +9,11 @@
   unicode-range: U+AC00-D7A3;
 }
 :root {
-  --primary1: #53bc5c;
+  --primary1: #5cbb90;
   --primary2: #5cbb90;
+  --primary3: #275C44;
   --active: #fe6666;
-  --disable: #bdbdbd;
+  --disable: #F3F3F3;
   --text: #191919;
   --text2: #8e8e8e;
 }
@@ -43,6 +44,7 @@ button {
   border: 0;
   border-radius: 6px;
   //padding: 10px 30px;
+  color: #bdbdbd;
   outline: 0;
   background-color: var(--disable);
   cursor: pointer;

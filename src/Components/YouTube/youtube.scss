@@ -1,61 +1,68 @@
-
-
 .container {
-  max-width: 1200px;
-  width:100%;
-  display: block;
+  width: 100%;
   margin: auto;
+  display: block;
   margin-top: 30px;
+  max-width: 1200px;
 }
 
-.youtube {
+.youtube-contents {
   margin-top: 20px;
   display: grid;
+  p {
+    font-size: 15px;
+    border-bottom: none;
+    font-weight: 100;
+    // display: none;
+    margin: 0;
+  }
 }
 
-.video-list{
-  //display: grid;
-  //grid-template-columns: repeat(3, 1fr);
+.video-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   grid-gap: 40px;
 }
-.thumbnail{
+
+.thumbnail {
   border-radius: 10px;
+  transition: 0.1s;
 }
 
-.thumbnail:hover{
-  box-shadow: 0 0 10px #5cbb90;
-  transform: scale(1.2);
+.thumbnail:hover {
+  box-shadow: 0 0 10px #0000002d;
+  transform: scale(1.05);
 }
 
-.thumbnail img{
+.thumbnail img {
   width: 100%;
   height: 100%;
 }
 
 .title {
-  font-size: 15px;
-  font-weight: 600;
   width: 300px;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  padding: 5px;
   overflow: hidden;
-  padding: 5px;
+  font-weight: 100;
+  display: none;
+  
+  .content-box {
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+
+  }
 }
-.channel-title{
-  font-size: 14px;
+
+p.channel-title {
   padding: 5px;
   opacity: 80%;
-}
-.content-box {
   display: flex;
-  gap: 10px;
-  align-items: center;
 }
-.make-date {
-  font-size: 12px;
+
+p.make-date {
   opacity: 80%;
+  display: none;
 }

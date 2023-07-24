@@ -39,7 +39,7 @@ export default function Calendar(props: Props) {
     // })();
   }, [month, year]);
 
-  const dayList = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const dayList = ["SU", "MO", "TU", "WE", "TH", "FR", "SA"];
   //const today = new Date().getDate();
   const sth = useRef<Map<string, number>>();
 
@@ -57,24 +57,6 @@ export default function Calendar(props: Props) {
       return sth.current;
     });
   },{staleTime: 1000*60});
-
-
-  // async function tempApi() {
-  //   try {
-  //     const res = await axios.get("/kdt5/expenses/summary", {
-  //       params: {
-  //         period: "daily",
-  //         userId: "team6",
-  //         category: category
-  //       }
-  //     });
-  //     const data: ResponseCalendar[] = res.data;
-  //     const arr: CalendarMap[] = data.map((v) => [v._id, v.totalAmount]);
-  //     sth.current = new Map<string, number>(arr);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }
 
   if (isLoading) {
     return "Loading...";

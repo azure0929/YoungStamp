@@ -3,14 +3,7 @@ import { Bar } from "react-chartjs-2";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
+ChartJS.register( CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend );
 
 interface MonthlySavings {
   _id: string;
@@ -46,7 +39,6 @@ const MonthlySavings: React.FC<MonthlySavingsProps> = ({ activeMonth }) => {
             "Content-Type": "application/json",
           },
         });
-        // console.log(response);
         setPeriod(response.data);
         setChartData(response.data);
       } catch (error) {
@@ -57,29 +49,39 @@ const MonthlySavings: React.FC<MonthlySavingsProps> = ({ activeMonth }) => {
     fetchData();
   }, []);
 
-  // console.log(chartData);
-
   return (
-    <div className="chart">
-      {chartData && (
-        <div>
-          <Bar
-            data={{
-              // 변경된 부분: activeMonth에 따라 labels 변경
-              labels: activeMonth === "선택없음" ? chartData.map((item) => item._id) : [activeMonth],
-              datasets: [
-                {
-                  label: "월간 저축양",
-                  data: activeMonth === "선택없음" ? chartData.map((item) => item.totalAmount) : [chartData.find((item) => item._id === activeMonth)?.totalAmount || 0],
-                  backgroundColor: "rgba(92, 187, 144, 0.8)",
-                  borderColor: "rgba(92, 187, 144, 1)",
-                  borderWidth: 1,
-                },
-              ],
-            }}
-          />
-        </div>
-      )}
+    <div className="chart-contents">
+      <p><span>월간</span> 저축양</p>
+      <div className="chart">
+        {chartData && (
+          <div>
+            <Bar
+              data={{
+                labels: activeMonth === "선택없음" ? chartData.map((item) => item._id) : [activeMonth],
+                datasets: [
+                  {
+                    label: "총 저축양",
+                    data: activeMonth === "선택없음" ? chartData.map((item) => item.totalAmount) : [chartData.find((item) => item._id === activeMonth)?.totalAmount || 0],
+                    backgroundColor: "rgba(92, 187, 144, 0.8)",
+                    borderColor: "rgba(92, 187, 144, 1)",
+                    borderWidth: 1
+                  },
+                ],
+              }}
+              options={{
+                responsive: true,
+                maintainAspectRatio: false,
+                layout: {
+                  padding: {
+                    left: 30,
+                    right: 30
+                  }
+                }
+              }}
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
 };

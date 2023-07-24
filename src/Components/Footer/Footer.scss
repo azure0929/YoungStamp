@@ -1,26 +1,36 @@
 footer {
-  margin-top: 180px;
+  margin-top: 60px;
   .inner {
-    width: 1200px;
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
+    max-width: 1200px;
+    width: 100%;
     height: 358px;
+    margin: 0 auto;
+    display: flex;
+    padding: 64px 0;
+    padding-left: 30px;
+    justify-content: space-between;
+    gap: 50px;
+    flex-wrap: wrap;
     font-size: 12px;
     .logo {
-      width: 160px;
       img {
-        width: 100%;
+        width: 160px;
         display: block;
       }
     }
     .contents {
+      max-width: 878px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      gap: 50px;
+      flex-wrap: wrap;
+      font-family: "Noto Sans KR";
+      letter-spacing: -.05em;
       .link {
         margin-bottom: 52px;
         display: flex;
         li {
-          font-family: "Noto Sans KR";
-          letter-spacing: -.05em;
           font-size: 14px;
           list-style: none;
           color: var(--text);
@@ -31,8 +41,7 @@ footer {
         }
       }
       .infolist {
-        font-family: "Noto Sans KR";
-        letter-spacing: -.05em;
+        width: 100%;
         font-size: 12px;
         margin-bottom: 28px;
         color: var(--text2);
@@ -58,24 +67,28 @@ footer {
       }
     }
     .client {
-      letter-spacing: -.05em;
       color: var(--text2);
-      font-family: "Noto Sans KR";
       h4 {
         font-size: 14px;
+        letter-spacing: -.05em;
+        font-family: "Noto Sans KR";
+        font-weight: normal;
       }
       h2 {
         font-size: 24px;
         font-family: "Spoqa Han Sans Neo";
         letter-spacing: 0;
+        font-weight: 700;
       }
       a {
-        border: 1px solid var(--text2);
-        border-radius: 6px;
         display: block;
         width: 110px;
-        margin-top: 24px;
+        font-family: "Noto Sans KR";
+        letter-spacing: -.05em;
         text-align: center;
+        border: 1px solid var(--text2);
+        border-radius: 6px;
+        margin-top: 24px;
         padding: 10px 26px;
       }
     }

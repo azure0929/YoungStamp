@@ -32,7 +32,7 @@ export default function( {video}:{video:YoutubeType} ) {
             {viewYoutube(video)}
           <button
             className="modal-close"
-            onClick={hide}>Close</button>
+            onClick={hide}>닫기</button>
           </div>
         </div>
       )}
