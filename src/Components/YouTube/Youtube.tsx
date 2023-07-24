@@ -1,6 +1,6 @@
 
 import VideoCard from "./VideoCard.tsx";
-import "@/Components/YouTube/Youtube.scss";
+import "@/Components/YouTube/youtube.scss";
 import { useEffect, useState } from "react";
 import { fakeGetVideos } from "@/Api/youtubeApi.ts";
 
