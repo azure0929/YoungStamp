@@ -1,9 +1,9 @@
 import { formatAgo } from "./FormatAgo.ts";
 import { useState } from "react";
 import YouTube, { YouTubeProps } from "react-youtube";
-import "@/Components/YouTube/Youtube.scss";
+import "@/Components/YouTube/youtube.scss";
 import "@/Components/Modal/Modal.scss";
-export default function( {video}:{video:YoutubeType} ) {
+export default function ({ video }: { video: YoutubeType }) {
   const { title, thumbnails, channelTitle, publishedAt } = video.snippet;
   const { isVisible, show, hide } = useModal();
 
@@ -12,27 +12,31 @@ export default function( {video}:{video:YoutubeType} ) {
   };
   return (
     <>
-      <li className={'video-items'}>
+      <li className={"video-items"}>
         <img
           className={"thumbnail"}
           onClick={handleClick}
-          src={thumbnails.medium.url} alt={title} />
+          src={thumbnails.medium.url}
+          alt={title}
+        />
         <div>
-          <p className={'title'}>{title}</p>
-          <div className={'content-box'}>
-            <p className={'channel-title'}>{channelTitle}</p>
-            <p className={'make-date'}>{formatAgo(publishedAt, "ko")}</p>
+          <p className={"title"}>{title}</p>
+          <div className={"content-box"}>
+            <p className={"channel-title"}>{channelTitle}</p>
+            <p className={"make-date"}>{formatAgo(publishedAt, "ko")}</p>
           </div>
         </div>
       </li>
       {isVisible && (
-        <div className={"modal-overlay"}
-             style={{display: isVisible? "flex" : "none"}}>
+        <div
+          className={"modal-overlay"}
+          style={{ display: isVisible ? "flex" : "none" }}
+        >
           <div className="modal-window">
             {viewYoutube(video)}
-          <button
-            className="modal-close"
-            onClick={hide}>닫기</button>
+            <button className="modal-close" onClick={hide}>
+              닫기
+            </button>
           </div>
         </div>
       )}
@@ -51,16 +55,13 @@ function useModal() {
   return { isVisible, show, hide };
 }
 
-function viewYoutube( video:YoutubeType ) {
+function viewYoutube(video: YoutubeType) {
   const opts: YouTubeProps["opts"] = {
     height: "540",
     width: "600",
     playerVars: {
-      autoplay: 1
-    }
+      autoplay: 1,
+    },
   };
-  return (
-        <YouTube videoId={video.videoId} opts={opts}  />
-  );
+  return <YouTube videoId={video.videoId} opts={opts} />;
 }
-
