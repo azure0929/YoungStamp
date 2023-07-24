@@ -5,17 +5,18 @@ import DailyChart from "@/Components/Chart/Daily/DailyChart";
 import WeeklyChart from "@/Components/Chart/Weekly/WeeklyChart";
 import MonthlyChart from "@/Components/Chart/Monthly/MonthlyChart";
 import Modal from "@/Components/Modal/Modal";
-import SearchCartList from "@/Components/Search/Component/SearchCartList";
+// import SearchCartList from "@/Components/Search/Component/SearchCartList";
 import Calories from "@/Routes/Calories/Calories";
 import PretendBuy from "@/Routes/PretendBuy/Pretend-Buy";
 import { MdOutlineAddCard } from "react-icons/md";
 import { MdDonutLarge } from "react-icons/md";
 import { MdOutlineCalendarMonth } from "react-icons/md";
 import { MdOutlineDateRange } from "react-icons/md";
-import { MdCalendarToday } from "react-icons/md";
+import { MdOutlineCalendarToday } from "react-icons/md";
+import Youtube from "@/Components/YouTube/Youtube";
 
 export default function Main() {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(2);
   const [monthDropdownOpen, setMonthDropdownOpen] = useState(false);
   const [weekDropdownOpen, setWeekDropdownOpen] = useState(false);
   const [dayDropdownOpen, setDayDropdownOpen] = useState(false);
@@ -149,9 +150,9 @@ export default function Main() {
   const tabContArr = [
     {
       tabTitle: (
-        <li>
+        <li key={0}>
           <div role="button" className={activeIndex === 0 ? "is-active" : ""} onClick={() => tabClickHandler(0)}>
-            <MdCalendarToday size="20" />
+            <MdOutlineCalendarToday size="18" />
             {activeMonth === "선택없음" ? "월간" : activeMonth}
           </div>
         </li>
@@ -167,7 +168,7 @@ export default function Main() {
     },
     {
       tabTitle: (
-        <li>
+        <li key={1}>
           <div role="button" className={activeIndex === 1 ? "is-active" : ""} onClick={() => tabClickHandler(1)}>
             <MdOutlineDateRange size="20" />
             {activeWeek === "선택없음" ? "주간" : activeWeek}
@@ -185,7 +186,7 @@ export default function Main() {
     },
     {
       tabTitle: (
-        <li>
+        <li key={2}>
           <div role="button" className={activeIndex === 2 ? "is-active" : ""} onClick={() => tabClickHandler(2)}>
             <MdOutlineCalendarMonth size="20" />
             {activeDaily === "선택없음" ? "일간" : activeDaily}
@@ -236,8 +237,7 @@ export default function Main() {
       </Modal>
 
       <Modal visibility={scale} toggle={setScale}>
-        <Calories />
-        <SearchCartList />
+        <Calories visibility={scale} toggle={setScale}/>
       </Modal>
 
       <div className="daychart">
@@ -272,8 +272,7 @@ export default function Main() {
       <div className="youtube">
         <p><span>유튜브</span> 추천 운동 영상</p>
         <div className="youtube-contents">
-          <div>내용을 넣어주세요.</div>
-          {/* 내용 */}
+          <Youtube />
         </div>
       </div>
     </div>

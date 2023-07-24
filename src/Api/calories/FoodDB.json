@@ -7,7 +7,8 @@
     "NUTR_CONT4": "14.50",
     "NUTR_CONT5": "N/A",
     "NUTR_CONT6": "38.00",
-    "SERVING_WT": "100"
+    "SERVING_WT": "100",
+    "image": "f1"
   },
   {
     "DESC_KOR": "찐고구마",
@@ -17,7 +18,8 @@
     "NUTR_CONT4": "-2.00",
     "NUTR_CONT5": "N/A",
     "NUTR_CONT6": "2.00",
-    "SERVING_WT": "100"
+    "SERVING_WT": "100",
+    "image": "f2"
   },
   {
     "DESC_KOR": "실곤약샐러드",
@@ -27,7 +29,8 @@
     "NUTR_CONT4": "4.98",
     "NUTR_CONT5": "N/A",
     "NUTR_CONT6": "35.41",
-    "SERVING_WT": "120"
+    "SERVING_WT": "120",
+    "image": "f3"
   },
   {
     "DESC_KOR": "단호박두부찜",
@@ -37,8 +40,8 @@
     "NUTR_CONT4": "1.64",
     "NUTR_CONT5": "N/A",
     "NUTR_CONT6": "220.04",
-
-    "SERVING_WT": "57"
+    "SERVING_WT": "57",
+    "image": "f4"
   },
   {
     "DESC_KOR": "바나나",
@@ -48,7 +51,8 @@
     "NUTR_CONT4": "0.00",
     "NUTR_CONT5": "N/A",
     "NUTR_CONT6": "1.00",
-    "SERVING_WT": "100"
+    "SERVING_WT": "100",
+    "image": "f5"
   },
   {
     "DESC_KOR": "닭고기샐러드",
@@ -58,7 +62,8 @@
     "NUTR_CONT4": "17.40",
     "NUTR_CONT5": "N/A",
     "NUTR_CONT6": "271.43",
-    "SERVING_WT": "172"
+    "SERVING_WT": "172",
+    "image": "f6"
   },
   {
     "DESC_KOR": "과일요구르트샐러드",
@@ -68,7 +73,8 @@
     "NUTR_CONT4": "0.39",
     "NUTR_CONT5": "N/A",
     "NUTR_CONT6": "19.76",
-    "SERVING_WT": "150"
+    "SERVING_WT": "150",
+    "image": "f7"
   },
   {
     "DESC_KOR": "그릭요거트플레인",
@@ -78,17 +84,19 @@
     "NUTR_CONT4": "7.10",
     "NUTR_CONT5": "14.00",
     "NUTR_CONT6": "100.00",
-    "SERVING_WT": "100"
+    "SERVING_WT": "100",
+    "image": "f8"
   },
   {
-    "DESC_KOR": "아보카도달걀샌드위치",
+    "DESC_KOR": "달걀샌드위치",
     "NUTR_CONT1": "152.41",
     "NUTR_CONT2": "20.23",
     "NUTR_CONT3": "5.74",
     "NUTR_CONT4": "5.06",
     "NUTR_CONT5": "N/A",
     "NUTR_CONT6": "271.69",
-    "SERVING_WT": "65"
+    "SERVING_WT": "65",
+    "image": "f9"
   },
   {
     "DESC_KOR": "호밀식빵",
@@ -98,7 +106,8 @@
     "NUTR_CONT4": "2.45",
     "NUTR_CONT5": "2.10",
     "NUTR_CONT6": "189.00",
-    "SERVING_WT": "70"
+    "SERVING_WT": "70",
+    "image": "f10"
   },
   {
     "DESC_KOR": "사과",
@@ -108,6 +117,7 @@
     "NUTR_CONT4": "0.10",
     "NUTR_CONT5": "N/A",
     "NUTR_CONT6": "16.00",
-    "SERVING_WT": "100"
+    "SERVING_WT": "100",
+    "image": "f11"
   }
 ]

@@ -123,10 +123,6 @@
     &::-webkit-scrollbar-track {
       background-color: #fff;
     }
-    // 아래 div 부분부터 수정하시면 됩니다.
-    div {
-      height: 1500px;
-    }
   }
 }
 
@@ -218,10 +214,18 @@
       }
     }
     .buy {
+      transition: 0.1s;
       background-color: #338F66;
     }
+    .buy:hover {
+      transform: scale(0.98);
+    }
     .scale {
+      transition: 0.1s;
       background-color: var(--primary1);
+    }
+    .scale:hover {
+      transform: scale(0.98);
     }
   }
 }

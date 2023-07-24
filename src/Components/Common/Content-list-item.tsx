@@ -1,6 +1,7 @@
 import { Description } from "@/Components/Common/Desctiption.tsx";
 import { Amount } from "@/Components/Common/Amount.tsx";
-import { TiDeleteOutline } from "react-icons/ti";
+import { BiSolidMinusCircle } from "react-icons/bi";
+import "@/Components/Common/Content_modal.scss";
 export const ContentListItem: React.FC<ContentListItemProps> =
   ({ isDiv, state, item, handleChange, handleSubmit, handleDelete }) => {
     return (
@@ -17,7 +18,7 @@ export const ContentListItem: React.FC<ContentListItemProps> =
             isDiv={isDiv[item._id] || false} id={"amount"}
             state={state} item={item}
             handleChange={handleChange} handleBlur={handleSubmit} />
-          <TiDeleteOutline
+          <BiSolidMinusCircle
             className={"delete-button"}
             onClick={() => handleDelete(item._id)} />
         </li>

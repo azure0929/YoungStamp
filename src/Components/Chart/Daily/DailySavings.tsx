@@ -39,7 +39,6 @@ const DailySavings: React.FC<DailyChartProps> = ({ activeDaily }) => {
             "Content-Type": "application/json",
           },
         });
-        console.log(response);
         setChartData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -48,8 +47,6 @@ const DailySavings: React.FC<DailyChartProps> = ({ activeDaily }) => {
 
     fetchData();
   }, []);
-
-  console.log(chartData);
 
   return (
     <div className="chart-contents">

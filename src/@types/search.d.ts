@@ -9,19 +9,54 @@ declare interface FoodItem {
   NUTR_CONT5: number;
   NUTR_CONT6: number;
   SERVING_WT: number;
+  image: "f8";
 }
 
 /** 설명 */
 declare interface Item {
   id: number;
   title: string;
-  calories: number;
-  carbs: number;
-  protein: number;
-  fat: number;
-  sugar: number;
-  sodium: number;
+  calories: number | string;
+  carbs: number | string;
+  protein: number | string;
+  fat: numbe | stringr;
+  sugar: number | string;
+  sodium: number | string;
   serving: number;
+  image?: string;
+}
+
+  declare interface CaloriesItem {
+    filter(arg0: (v: { _id: any; amount: any; description: string; }) => { _id: any; amount: any; description: string; }): unknown;
+    amount: number;
+    category: string;
+    date: string;
+    description: string;
+    userId: string;
+    __v: number;
+    _id: string;
+  }
+
+declare interface ItemData {
+  DESC_KOR: string;
+  NUTR_CONT1: string;
+  NUTR_CONT2: string;
+  NUTR_CONT3: string;
+  NUTR_CONT4: string;
+  NUTR_CONT5: string;
+  NUTR_CONT6: string;
+  SERVING_WT: string;
+  image: string;
+}
+
+/** 설명 */
+declare interface Arr {
+  _id: string;
+  date: string;
+  userId: string;
+  amount: number;
+  category: string;
+  description: string;
 }
 
 /** 설명 */
@@ -29,6 +64,16 @@ declare interface SearchPagingProps {
   page: number;
   count: number;
   setPage: (page: number) => void;
+}
+
+declare interface GetData {
+  amount: number;
+  category: string;
+  date: string;
+  description: string;
+  userId: string;
+  __v: number;
+  _id: string;
 }
 
 /** 설명 */
@@ -39,7 +84,6 @@ declare interface FoodContextType {
 
 /** 설명 */
 declare interface FoodAddContextType {
-  /** 설명 */
   addFoodItem: {
     id: number;
     title: string;
@@ -51,6 +95,7 @@ declare interface FoodAddContextType {
     sodium: number;
     serving: number;
   };
+
   /** 설명 */
   setAddFoodItem: React.Dispatch<
     React.SetStateAction<{
@@ -65,6 +110,18 @@ declare interface FoodAddContextType {
       serving: number;
     }>
   >;
+}
+
+/** 설명 */
+declare interface FoodAddsContextType {
+  addFoodItem: any;
+  setAddFoodItem: Dispatch<SetStateAction<boolean>>;
+}
+
+/** 설명 */
+declare interface FoodDelsContextType {
+  delFoodItem: any;
+  setDelFoodItem: Dispatch<SetStateAction<boolean>>;
 }
 
 /** 설명 */

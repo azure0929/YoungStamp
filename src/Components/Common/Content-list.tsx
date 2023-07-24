@@ -72,10 +72,11 @@ export default function ContentList(props: { date: string, category: string }) {
   return (
     <div>
       <ul className={"pretend-list"}>
-        {searchData.map((item: searchParamsTypeOutput) => {
+        {searchData.map((item: searchParamsTypeOutput, i: number) => {
           if (item.date === props.date) {
             return (
               <ContentListItem
+                key={i}
                 isDiv={isDiv} state={state} item={item}
                 handleChange={handleChange} handleSubmit={handleSubmit} handleDelete={handleDelete} />
             );
