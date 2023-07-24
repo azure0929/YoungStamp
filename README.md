@@ -9,7 +9,7 @@
 #### 추가적으로 메인 하단에는 유튜브 '홈트레이닝' 영상을 추천하여 볼 수 있습니다.
 <br>
 
-### • 배포 주소: [링크](https://en.wikipedia.org/)
+### • 배포 주소: [링크](https://stirring-flan-ea4348.netlify.app/)
 ### • 프로젝트 노션: [링크](https://www.notion.so/b46604e143034e5c870068070d706131?pvs=4)
 <br>
 
@@ -20,7 +20,7 @@
 ### 🧔 개발팀 
 |       **[서동욱](https://github.com/)**       |       **[박철민](https://github.com/)**        |     **[양준용](https://github.com/)**      | **[최용준](https://github.com/pelicanstd)** |
 |:------------------------------------------:|:-------------------------------------------:|:---------------------------------------:|:----------------------------------------:|
-| <img src="https://avatars.githubusercontent.com/u/106901147?v=4" width="300"> | <img src="https://avatars.githubusercontent.com/u/106785596?v=4" width="300"> | <img src="https://avatars.githubusercontent.com/u/128226527?v=4" width="300"> | <img src="https://avatars.githubusercontent.com/u/128352717?v=4" width="300"> |
+| <img src="https://avatars.githubusercontent.com/u/106901147?v=4" width="200"> | <img src="https://avatars.githubusercontent.com/u/106785596?v=4" width="200"> | <img src="https://avatars.githubusercontent.com/u/128226527?v=4" width="200"> | <img src="https://avatars.githubusercontent.com/u/128352717?v=4" width="200"> |
 | 총 괄<br/> Git 관리<br/> 캘린터 기능<br/>모달컴포토너트 제작 | 공공데이터 활용 검색기능<br/>칼로리 계산 기능<br/> (수정,삭제,입력)</br>디자인 보조<br/>| 전체 페이지 디자인<br/> 메인페이지 차트 구현<br/>(일일, 주간, 월간) |  삿다치고 기능구현<br/>(입력,삭제,수정)<br/>유투브 기능구현   |
 <br>
 
