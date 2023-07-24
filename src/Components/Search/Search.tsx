@@ -4,6 +4,9 @@ import { FoodKeywordContext } from "@/Store/SearchContext";
 import { useContext, useEffect, useState } from "react";
 import SearchItem from "@/Components/Search/Component/SearchItem";
 import SearchPaging from "@/Components/Search/Component/SearchPaging";
+import Modal from "../Modal/Modal";
+import Calories from "@/Routes/Calories/Calories";
+import { MdDonutLarge } from "react-icons/md";
 
 function SearchPage() {
   const [count, setCount] = useState(10); //아이템 총 개수
@@ -41,16 +44,25 @@ function SearchPage() {
     setCurrentPosts(foodlist.slice(indexOfFirstPost, indexOfLastPost)); //products의 배열을 현재 페이지의 첫번째와 마지막에 인덱스까지 값을 복사, 반환하여 setCurrentPosts에 전달
   }, [currentPage, indexOfLastPost, indexOfFirstPost, postPerPage, foodlist]); //위에 기능이 끝나면 배열 안의 결과들을 한 번 실행
 
+  const [scale, setScale] = useState(false);
+
   return (
     <div className="Container">
+      <>
+        <div className="CaloriesSearchTitle"><div className="strong">검색</div> 결과</div>
+        <div className="SearchContent">검색한 음식의 칼로리입니다. 원하시는 음식 칼로리 선택하면 ‘음식 칼로리 기록’에 추가 됩니다.</div>
+      </>
       <div className="SearchBar">
-        <div className="SearchBarTitle">검색 결과</div>
+        {/* <div className="SearchBarTitle">검색 결과</div> */}
         <div className="SearchBarText">
-          <span className="WhitePoint">{keyword}</span>에 대한 총
-          <span className="WhitePoint">{foodlist.length}</span>개 결과가
-          나왔습니다.
+          <div className="SearchText1"><span className="WhitePoint">{keyword}</span>에 대한 총</div>
+          <div className="SearchText1"><span className="WhitePoint">{foodlist.length}</span>개 결과가나왔습니다.</div>
         </div>
+        <div className="CaloriesModalOpen" onClick={() => { setScale(true); }}><MdDonutLarge/>추가한 칼로리 확인하기</div>
       </div>
+      <Modal visibility={scale} toggle={setScale}>
+        <Calories visibility={scale} toggle={setScale}/>
+      </Modal>
       <div className="CardContainer">
         {currentPosts && currentPosts.length > 0 ? (
           currentPosts.map((item, index) => {
